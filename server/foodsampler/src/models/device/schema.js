@@ -8,7 +8,7 @@ const schema = new Schema( {
     type: ObjectId,
     ref: 'Home',
   },
-  deviceId: {
+  device_id: {
     type: ObjectId,
   },
   label_btn_1: {

@@ -3,38 +3,28 @@
  * @apiName addEvent
  * @apiGroup Event
  *
- * @apiParam {String} [home_id] the id of the home where the event is installed.
- * @apiParam {String} [label_btn_1] the label of the 1st button.
- * @apiParam {String} [label_btn_2] the label of the 2nd button.
- * @apiParam {String} [label_btn_3] the label of the 3rd button.
- * @apiParam {String} [label_btn_4] the label of the 4th button.
- * @apiParam {String} [label_btn_5] the label of the 5th button.
- * @apiParam {String} [label_btn_6] the label of the 6th button.
- * @apiParam {String} [label_btn_7] the label of the 7th button.
+ * @apiParam {String} [device_id] the id of the home where the event is installed.
+ * @apiParam {String} [event_time] the label of the 1st button.
+ * @apiParam {Number} [btn_pressed] the label of the 2nd button.
  *
  * @apiSuccess {String[]} the data of the house just added to the db.
  * @apiSuccessExample {json} Success-Response:
  * {
- *    "event": {
- *        "_id": "5cb740f0ea31555637cc8a16",
- *        "homeId": "5cb7393217966a53ed44ce36",
- *        "label_btn_1": "pizza",
- *        "label_btn_2": "pasta al pomodoro",
- *        "label_btn_3": "prosciutto",
- *        "label_btn_4": "mozzarella",
- *        "label_btn_5": "stracchino",
- *        "label_btn_6": "pomodoro",
- *        "label_btn_7": "acciughe",
- *        "__v": 0
- *    }
- *}
+ *      "event": {
+ *          "_id": "5cb8288ce800d65ef483e887",
+ *          "event_time": "2019-04-18T07:34:36.729Z",
+ *          "device_id": "5cb7468be7de965826a57f20",
+ *          "btn_pressed": 0,
+ *          "__v": 0
+ *      }
+ * }
  * @apiExample {curl} Example usage:
- *     curl -X GET \
- *      http://127.0.0.1:3000/api/v1/events/5cb740f0ea31555637cc8a16 \
- *      -H 'Content-Type: application/x-www-form-urlencoded' \
- *      -H 'Postman-Token: ef217ee6-3251-4d1d-8879-53d439f44d60' \
- *      -H 'cache-control: no-cache' \
- *      -dd 'homeId=5cb7393217966a53ed44ce36&label_btn_1=pizza&label_btn_2=pasta%20al%20pomodoro&label_btn_3=prosciutto&label_btn_4=mozzarella&label_btn_5=stracchino&label_btn_6=pomodoro&label_btn_7=acciughe&undefined='
+ *  curl -X POST \
+ *    http://127.0.0.1:3000/api/v1/events/ \
+ *    -H 'Content-Type: application/x-www-form-urlencoded' \
+ *    -H 'Postman-Token: 3d12be8a-35f6-4664-af86-7e01e2665d00' \
+ *    -H 'cache-control: no-cache' \
+ *    -d 'device_id=5cb7468be7de965826a57f20&btn_pressed=0&undefined='
  */
 
 const { NotAcceptable } = require( 'rest-api-errors' );

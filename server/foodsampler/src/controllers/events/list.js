@@ -5,63 +5,50 @@
  *
  * @apiParam {Number} [limit] how many result to query.
  * @apiParam {Number} [skip] how many data to skip.
- * @apiParam {String} [homeId] get only the events installed in a specific home.
+ * @apiParam {String} [device_id] get only the events from a specific device.
  *
  * @apiSuccess {Array} list of events addresses found.
  * @apiSuccessExample {json} Success-Response:
- *    {
- *    "Events": [
- *        {
- *            "_id": "5cb7468be7de965826a57f20",
- *            "homeId": "5cb7393217966a53ed44ce36",
- *            "label_btn_1": "pizza marinara",
- *            "label_btn_2": "pasta al pomodoro",
- *            "label_btn_3": "prosciutto",
- *            "label_btn_4": "mozzarella",
- *            "label_btn_5": "stracchino",
- *            "label_btn_6": "tonno",
- *            "label_btn_7": "acciughe",
- *            "__v": 0
- *        },
- *        {
- *            "_id": "5cb740f0ea31555637cc8a16",
- *            "homeId": "5cb7393217966a53ed44ce36",
- *            "label_btn_1": "pizza",
- *            "label_btn_2": "pasta al pomodoro",
- *            "label_btn_3": "prosciutto",
- *            "label_btn_4": "mozzarella",
- *            "label_btn_5": "stracchino",
- *            "label_btn_6": "pomodoro",
- *            "label_btn_7": "acciughe",
- *            "__v": 0
- *        }
- *    ]
+ *  {
+ *      "Events": [
+ *          {
+ *              "_id": "5cb828d5d6bf785f320fc380",
+ *              "event_time": "2019-04-18T07:35:49.386Z",
+ *              "device_id": "5cb7468be7de965826a57f20",
+ *              "btn_pressed": 3,
+ *              "__v": 0
+ *          },
+ *          {
+ *              "_id": "5cb8288ce800d65ef483e887",
+ *              "event_time": "2019-04-18T07:34:36.729Z",
+ *              "device_id": "5cb7468be7de965826a57f20",
+ *              "btn_pressed": 0,
+ *              "__v": 0
+ *          }
+ *      ]
+ * }
  *}
  * @apiExample {curl} Example usage:
- *    curl -X GET \
- *  'http://127.0.0.1:3000/api/v1/events/?homeId=5cb7393217966a53ed44ce36' \
- *  -H 'Content-Type: application/x-www-form-urlencoded' \
- *  -H 'Postman-Token: 25e68ac2-448c-45e1-aaf9-c1afb7ba863e' \
- *  -H 'cache-control: no-cache' \
- *  -d undefined=
+ *  curl -X GET \
+ *    'http://127.0.0.1:3000/api/v1/events/?device_id=5cb7468be7de965826a57f20' \
+ *    -H 'Content-Type: application/x-www-form-urlencoded' \
+ *    -H 'Postman-Token: 1a206e1e-bab6-4415-89dd-902b07c1dbff' \
+ *    -H 'cache-control: no-cache' \
+ *    -d undefined=
  */
-
-
 
 const _ = require( 'lodash' );
 
 const list = ( { Event }, { config } ) => async ( req, res, next ) => {
-  let { limit, skip, search, homeId } = req.query;
+  let { limit, skip, device_id } = req.query;
 
   skip = skip ? parseInt( skip, 10 ) : 0;
   limit = limit ? parseInt( limit, 10 ) : 100;
 
   try {
     const query = {};
-    if ( search ) {
-      _.extend( query, { nick_name: new RegExp( `${search}`, 'i' ) } )
-    } else if ( homeId ) {
-      _.extend( query, { homeId: homeId } )
+    if ( device_id ) {
+      _.extend( query, { device_id: device_id } )
     }
     const Events = await Event.find( query )
       .skip( skip )
