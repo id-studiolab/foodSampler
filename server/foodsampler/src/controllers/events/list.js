@@ -1,16 +1,16 @@
 /**
- * @api {get} /api/v1/devices/ getDevicesList
- * @apiName getDevicesList
- * @apiGroup Device
+ * @api {get} /api/v1/events/ getEventsList
+ * @apiName getEventsList
+ * @apiGroup Event
  *
  * @apiParam {Number} [limit] how many result to query.
  * @apiParam {Number} [skip] how many data to skip.
- * @apiParam {String} [homeId] get only the devices installed in a specific home.
+ * @apiParam {String} [homeId] get only the events installed in a specific home.
  *
- * @apiSuccess {Array} list of devices addresses found.
+ * @apiSuccess {Array} list of events addresses found.
  * @apiSuccessExample {json} Success-Response:
  *    {
- *    "Devices": [
+ *    "Events": [
  *        {
  *            "_id": "5cb7468be7de965826a57f20",
  *            "homeId": "5cb7393217966a53ed44ce36",
@@ -39,7 +39,7 @@
  *}
  * @apiExample {curl} Example usage:
  *    curl -X GET \
- *  'http://127.0.0.1:3000/api/v1/devices/?homeId=5cb7393217966a53ed44ce36' \
+ *  'http://127.0.0.1:3000/api/v1/events/?homeId=5cb7393217966a53ed44ce36' \
  *  -H 'Content-Type: application/x-www-form-urlencoded' \
  *  -H 'Postman-Token: 25e68ac2-448c-45e1-aaf9-c1afb7ba863e' \
  *  -H 'cache-control: no-cache' \
@@ -50,7 +50,7 @@
 
 const _ = require( 'lodash' );
 
-const list = ( { Device }, { config } ) => async ( req, res, next ) => {
+const list = ( { Event }, { config } ) => async ( req, res, next ) => {
   let { limit, skip, search, homeId } = req.query;
 
   skip = skip ? parseInt( skip, 10 ) : 0;
@@ -63,12 +63,12 @@ const list = ( { Device }, { config } ) => async ( req, res, next ) => {
     } else if ( homeId ) {
       _.extend( query, { homeId: homeId } )
     }
-    const Devices = await Device.find( query )
+    const Events = await Event.find( query )
       .skip( skip )
       .limit( limit )
       .sort( { _id: -1 } );
 
-    res.status( 200 ).send( { Devices } );
+    res.status( 200 ).send( { Events } );
   } catch ( error ) {
     next( error );
   }
