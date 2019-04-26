@@ -3,13 +3,12 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 const schema = new Schema( {
-
-  homeId: {
-    type: ObjectId,
-    ref: 'Home',
-  },
   device_id: {
     type: ObjectId,
+  },
+  home_id: {
+    type: ObjectId,
+    ref: 'Home',
   },
   label_btn_1: {
     type: String,
@@ -32,6 +31,10 @@ const schema = new Schema( {
   label_btn_7: {
     type: String,
   },
+  events: [ {
+    type: ObjectId,
+    ref: 'Event'
+  } ],
 } );
 
 module.exports = {

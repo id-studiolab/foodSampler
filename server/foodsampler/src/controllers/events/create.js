@@ -31,10 +31,17 @@ const { NotAcceptable } = require( 'rest-api-errors' );
 const { sendOne } = require( '../../middleware' );
 const _ = require( 'lodash' );
 
-const create = ( { Event }, { config } ) => async ( req, res, next ) => {
+const create = ( { Event, Device }, { config } ) => async ( req, res, next ) => {
   try {
+
     const event = new Event();
     _.extend( event, req.body );
+
+    const device = await Device.findOne( event.device_id );
+    device.events.push( event );
+
+    await device.save();
+
     await event.save();
 
     return sendOne( res, { event } );

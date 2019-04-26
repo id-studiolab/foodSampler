@@ -6,3 +6,6 @@ a node js server exposing rest api.
 - run the server with `npm run dev`
 
 - update the apidoc using gulp `apidoc`
+
+# to deploy to heroku
+`git subtree push --prefix server/foodsampler/ heroku master`

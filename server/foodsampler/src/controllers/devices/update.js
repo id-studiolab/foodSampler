@@ -3,6 +3,7 @@
  * @apiName updateDevice
  * @apiGroup Device
  *
+ * @apiParam {String} [homeId] the label of the 1st button.
  * @apiParam {String} [label_btn_1] the label of the 1st button.
  * @apiParam {String} [label_btn_2] the label of the 2nd button.
  * @apiParam {String} [label_btn_3] the label of the 3rd button.
@@ -16,7 +17,7 @@
  * {
  *    "device": {
  *        "_id": "5cb7468be7de965826a57f20",
- *        "homeId": "5cb7393217966a53ed44ce36",
+ *        "home_id": "5cb7393217966a53ed44ce36",
  *        "label_btn_1": "pizza marinara",
  *        "label_btn_2": "pasta al pesto",
  *        "label_btn_3": "prosciutto",

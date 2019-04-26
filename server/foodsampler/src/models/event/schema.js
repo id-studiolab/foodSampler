@@ -4,11 +4,6 @@ const ObjectId = Schema.Types.ObjectId;
 
 const schema = new Schema( {
 
-  device_id: {
-    type: ObjectId,
-    ref: 'Device',
-    required: [ true ],
-  },
   event_id: {
     type: ObjectId,
   },
@@ -21,6 +16,12 @@ const schema = new Schema( {
     type: Number,
     required: [ true ],
   },
+  device_id: {
+    type: ObjectId,
+    ref: 'Device',
+    required: [ true ],
+  },
+
 
 } );
 

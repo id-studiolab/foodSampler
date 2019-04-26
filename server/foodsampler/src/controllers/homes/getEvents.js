@@ -1,5 +1,5 @@
 /**
- * @api {get} /homes/:id getHomeByID
+ * @api {get} /homes/:id/events getEventsByHome
  * @apiName getHomeByID
  * @apiGroup Home
  *
@@ -15,15 +15,35 @@
  *    }
  */
 
-const get = ( { Home }, { config } ) => async ( req, res, next ) => {
+const getEvents = ( { Home, Device, Event }, { config } ) => async ( req, res, next ) => {
+
   const { _id } = req.params;
 
   try {
     const home = await Home.findOne( { _id } )
+      .populate( {
+        path: 'devices',
+        populate: {
+          path: 'events',
+        }
+      } )
+
     res.status( 200 ).send( { home } );
   } catch ( error ) {
     next( error );
   }
+
+
+  // try {
+  //   const home = await Home.findOne( { _id } )
+  //     .populate( 'devices' )
+  //     .populate( 'events' );
+  //   res.status( 200 ).send( { home } );
+  // } catch ( error ) {
+  //   next( error );
+  // }
+
+
 };
 
-module.exports = { get };
+module.exports = { getEvents };

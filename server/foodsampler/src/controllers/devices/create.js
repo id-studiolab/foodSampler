@@ -41,12 +41,18 @@ const { NotAcceptable } = require( 'rest-api-errors' );
 const { sendOne } = require( '../../middleware' );
 const _ = require( 'lodash' );
 
-const create = ( { Device }, { config } ) => async ( req, res, next ) => {
+const create = ( { Device, Home }, { config } ) => async ( req, res, next ) => {
   try {
+
     const device = new Device();
     _.extend( device, req.body );
-    await device.save();
 
+    const home = await Home.findOne( device.home_id );
+    home.devices.push( device );
+
+    await home.save();
+
+    await device.save();
     return sendOne( res, { device } );
   } catch ( error ) {
     next( error );
