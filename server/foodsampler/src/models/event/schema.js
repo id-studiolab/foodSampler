@@ -16,8 +16,12 @@ const schema = new Schema( {
     type: Number,
     required: [ true ],
   },
-  device_id: {
-    type: ObjectId,
+  battery_voltage: {
+    type: Number,
+    required: [ true ],
+  },
+  device_EUI: {
+    type: String,
     ref: 'Device',
     required: [ true ],
   },

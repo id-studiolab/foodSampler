@@ -6,6 +6,10 @@ const schema = new Schema( {
   device_id: {
     type: ObjectId,
   },
+  device_EUI: {
+    type: String,
+    required: [ true ]
+  },
   home_id: {
     type: ObjectId,
     ref: 'Home',

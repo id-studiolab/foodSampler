@@ -38,4 +38,5 @@ const get = ( { Event }, { config } ) => async ( req, res, next ) => {
   }
 };
 
+
 module.exports = { get };

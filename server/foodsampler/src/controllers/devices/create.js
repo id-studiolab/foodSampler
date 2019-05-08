@@ -3,6 +3,7 @@
  * @apiName addDevice
  * @apiGroup Device
  *
+ * @apiParam {String} [device_EUI] the EUI of the device as registered in ttn.
  * @apiParam {String} [home_id] the id of the home where the device is installed.
  * @apiParam {String} [label_btn_1] the label of the 1st button.
  * @apiParam {String} [label_btn_2] the label of the 2nd button.
@@ -17,6 +18,7 @@
  * {
  *    "device": {
  *        "_id": "5cb740f0ea31555637cc8a16",
+ *        "device_EUI": "00603718517107D4",
  *        "homeId": "5cb7393217966a53ed44ce36",
  *        "label_btn_1": "pizza",
  *        "label_btn_2": "pasta al pomodoro",
