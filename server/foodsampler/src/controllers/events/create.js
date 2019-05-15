@@ -40,14 +40,20 @@ const create = ( { Event, Device }, { config } ) => async ( req, res, next ) => 
 
     const device = await Device.findOne( { device_EUI: event.device_EUI } );
 
-    console.log( "found device: ", device );
-    device.events.push( event );
+    if ( !device ) {
+      console.error( "device is not registered on db" )
+    } else {
+      //console.log( "found device: ", device );
+      device.events.push( event );
 
-    await device.save();
+      await device.save();
 
-    await event.save();
+      await event.save();
 
-    return sendOne( res, { event } );
+      return sendOne( res, { event } );
+    }
+
+
   } catch ( error ) {
     next( error );
   }

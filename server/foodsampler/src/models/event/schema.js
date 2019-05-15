@@ -14,7 +14,6 @@ const schema = new Schema( {
   },
   btn_pressed: {
     type: Number,
-    required: [ true ],
   },
   battery_voltage: {
     type: Number,

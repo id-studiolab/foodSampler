@@ -9,3 +9,13 @@ a node js server exposing rest api.
 
 # to deploy to heroku
 `git subtree push --prefix server/foodsampler/ heroku master`
+
+
+how to use it
+
+# create a new home
+use 
+
+
+# how to create a new device
+use postman

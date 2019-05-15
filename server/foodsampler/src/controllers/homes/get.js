@@ -5,14 +5,19 @@
  *
  * @apiSuccess {Array} data about a home
  * @apiSuccessExample {json} Success-Response:
- *     {
- *    "home": {
- *        "_id": "5cb72ad66ac4d24f89bb4c11",
- *        "nick_name": "romagnetti_home",
- *        "address": "walenburgerweg 62a",
- *        "__v": 0
- *        }
- *    }
+ *  {
+ *      "Homes": [
+ *          {
+ *              "devices": [
+ *                  "5cdbe0aa1a36b037d897af99"
+ *              ],
+ *              "_id": "5cdbdf1da63d7936c23bb30f",
+ *              "nick_name": "studiolab_test",
+ *              "address": "TUDelft campus",
+ *              "__v": 1
+ *          }
+ *      ]
+ * }
  */
 
 const get = ( { Home }, { config } ) => async ( req, res, next ) => {

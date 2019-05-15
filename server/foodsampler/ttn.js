@@ -25,6 +25,8 @@ ttn.data( appID, accessKey )
       var rawBuffer = payload.payload_raw;
       var battery_voltage = rawBuffer.readUIntBE( 0, 2 );
       var buttonPressed = rawBuffer[ 2 ];
+      buttonPressed = Math.log2( buttonPressed ) + 1; //Martin said to add 1 :) it won't hurt <3
+
       var time = payload.metadata.time
 
       console.log( "received", time, deviceEUI, buttonPressed, battery_voltage );
@@ -59,9 +61,11 @@ saveEventToDB = function( deviceEUI, buttonPressed, time, battery_voltage ) {
   console.log( options );
 
   request( options, function( error, response, body ) {
-    if ( error ) throw new Error( error );
-
-    console.log( body );
+    if ( error ) {
+      throw new Error( error );
+    } else {
+      console.log( "data saved", body );
+    }
   } );
 }
 

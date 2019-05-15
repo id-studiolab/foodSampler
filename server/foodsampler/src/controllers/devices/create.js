@@ -15,28 +15,33 @@
  *
  * @apiSuccess {String[]} the data of the house just added to the db.
  * @apiSuccessExample {json} Success-Response:
- * {
- *    "device": {
- *        "_id": "5cb740f0ea31555637cc8a16",
- *        "device_EUI": "00603718517107D4",
- *        "homeId": "5cb7393217966a53ed44ce36",
- *        "label_btn_1": "pizza",
- *        "label_btn_2": "pasta al pomodoro",
- *        "label_btn_3": "prosciutto",
- *        "label_btn_4": "mozzarella",
- *        "label_btn_5": "stracchino",
- *        "label_btn_6": "pomodoro",
- *        "label_btn_7": "acciughe",
- *        "__v": 0
- *    }
- *}
+ *  {
+ *      "device": {
+ *          "events": [],
+ *          "_id": "5cdbe0aa1a36b037d897af99",
+ *          "device_EUI": "00603718517107D",
+ *          "label_btn_1": "btn_1",
+ *          "label_btn_2": "btn_2",
+ *          "label_btn_3": "btn_3",
+ *          "label_btn_4": "btn_4",
+ *          "label_btn_5": "btn_6",
+ *          "label_btn_6": "btn_7",
+ *          "__v": 0
+ *      }
+ * }
  * @apiExample {curl} Example usage:
- *     curl -X GET \
- *      http://127.0.0.1:3000/api/v1/devices/5cb740f0ea31555637cc8a16 \
- *      -H 'Content-Type: application/x-www-form-urlencoded' \
- *      -H 'Postman-Token: ef217ee6-3251-4d1d-8879-53d439f44d60' \
- *      -H 'cache-control: no-cache' \
- *      -dd 'homeId=5cb7393217966a53ed44ce36&label_btn_1=pizza&label_btn_2=pasta%20al%20pomodoro&label_btn_3=prosciutto&label_btn_4=mozzarella&label_btn_5=stracchino&label_btn_6=pomodoro&label_btn_7=acciughe&undefined='
+ *    curl -X POST \
+ *   http://127.0.0.1:3000/api/v1/devices/ \
+ *   -H 'Cache-Control: no-cache' \
+ *   -H 'Connection: keep-alive' \
+ *   -H 'Content-Type: application/x-www-form-urlencoded' \
+ *   -H 'Host: 127.0.0.1:3000' \
+ *   -H 'Postman-Token: 6b4bd329-40d9-4b69-a212-9ec07484f59a,8ee444c0-c62f-4c78-b9ec-49c1ada45805' \
+ *   -H 'User-Agent: PostmanRuntime/7.11.0' \
+ *   -H 'accept-encoding: gzip, deflate' \
+ *   -H 'cache-control: no-cache' \
+ *   -H 'content-length: 166' \
+ *   -d 'homeId=5cdbdf1da63d7936c23bb30f&device_EUI=00603718517107D&label_btn_1=btn_1&label_btn_2=btn_2&label_btn_3=btn_3&label_btn_4=btn_4&label_btn_5=btn_6&label_btn_6=btn_7'
  */
 
 const { NotAcceptable } = require( 'rest-api-errors' );
