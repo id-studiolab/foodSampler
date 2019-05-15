@@ -40,13 +40,27 @@ ttn.data( appID, accessKey )
     process.exit( 1 )
   } )
 
-var host = "127.0.0.1";
-var port = 3000;
+const production = 'https://foodsampler.herokuapp.com/';
+const development = 'http://localhost';
+
+var host;
+
+if ( process.env.NODE_ENV == production ) {
+  console.log( "I'm in production" )
+  host = production;
+} else {
+  console.log( "I'm in development" );
+  host = development;
+}
+
+
+var port = process.env.PORT || 3000;
+console.log( host, port );
 
 saveEventToDB = function( deviceEUI, buttonPressed, time, battery_voltage ) {
   var options = {
     method: 'POST',
-    url: 'http://' + host + ':' + port + '/api/v1/events/ ',
+    url: host + ':' + port + '/api/v1/events/ ',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
