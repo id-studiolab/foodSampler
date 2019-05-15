@@ -1,5 +1,7 @@
 var mqtt = require( 'mqtt' );
-var mqttClient = mqtt.connect( 'mqtt://localhost:8888' );
+const config = require( './config' );
+
+var mqttClient = mqtt.connect( HEROKU_HOST + ':8888' );
 
 mqttClient.on( 'connect', function() {
   console.log( "mqtt client connected" )
