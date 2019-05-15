@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
-var app = require( '../app' );
+var api = require( '../api' );
 var debug = require( 'debug' )( 'foodsampler:server' );
 var http = require( 'http' );
+var mqttBroker = require( '../mqtt' );
 
 
 /**
@@ -14,13 +15,13 @@ var http = require( 'http' );
  */
 
 var port = normalizePort( process.env.PORT || '3000' );
-app.set( 'port', port );
+api.set( 'port', port );
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer( app );
+var server = http.createServer( api );
 
 /**
  * Listen on provided port, on all network interfaces.

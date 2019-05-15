@@ -2,6 +2,8 @@ var request = require( "request" );
 
 const config = require( './config' );
 
+var mqttClient = require( './mqtt_client' );
+
 //this is to receive data from TTN
 const ttn = require( 'ttn' );
 const key = ttn.key;
@@ -21,14 +23,14 @@ ttn.data( appID, accessKey )
 
       var deviceEUI = payload.hardware_serial;
       var rawBuffer = payload.payload_raw;
-      var battery_voltage = rawBuffer.readUIntLE( 0, 2 );
+      var battery_voltage = rawBuffer.readUIntBE( 0, 2 );
       var buttonPressed = rawBuffer[ 2 ];
       var time = payload.metadata.time
 
       console.log( "received", time, deviceEUI, buttonPressed, battery_voltage );
 
       saveEventToDB( deviceEUI, buttonPressed, time, battery_voltage );
-
+      mqttClient.sendDataToMQTT( 'event', deviceEUI, buttonPressed, time, battery_voltage );
     } )
   } )
   .catch( function( error ) {

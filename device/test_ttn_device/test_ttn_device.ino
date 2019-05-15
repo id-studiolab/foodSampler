@@ -10,7 +10,7 @@ const char *appKey = "A38DCB5F0F0C1A22EF6957C53B7F6D61";
 // Replace REPLACE_ME with TTN_FP_EU868 or TTN_FP_US915
 #define freqPlan TTN_FP_EU868
 
-TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
+TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan, 8);
 TheThingsNode *node;
 
 #define PORT_SETUP 1
@@ -93,6 +93,8 @@ void interval()
 void wake()
 {
   node->setColor(TTN_GREEN);
+    // Config Node
+  node->showStatus();
 }
 
 void sleep()
@@ -142,5 +144,5 @@ void sendData(uint8_t port){
 
   // This one is not optionnal, remove it
   // and say bye bye to RN2983 sleep mode
-  delay(50);
+  delay(500);
 }
