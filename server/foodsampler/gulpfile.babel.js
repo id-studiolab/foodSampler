@@ -1,32 +1,47 @@
+import gulp from 'gulp'
+
 const {
   spawn
 } = require( 'child_process' );
-const gulp = require( 'gulp' );
 const nodemon = require( 'gulp-nodemon' );
 const apidoc = require( 'gulp-apidoc' );
 
 
-gulp.task( 'api', () => nodemon( {
-  script: './bin/www',
-  watch: [ './' ]
-} ) );
+const api = () => {
+  nodemon( {
+    script: './bin/www',
+    watch: [ './' ]
+  } );
+}
 
-gulp.task( 'mongo', ( callback ) => {
+const mongo = ( callback ) => {
   const dbProcess = spawn( 'mongod' );
   dbProcess.on( 'data', console.log );
   dbProcess.on( 'close', ( code ) => {
     console.log( `Database was stopped with code ${code}` );
     callback();
   } );
-} );
+}
 
-gulp.task( 'apidoc', function( done ) {
+const doc = ( done ) => {
   apidoc( {
     src: "./",
     dest: "./doc",
     includeFilters: [ "src/controllers.*\\.js$" ],
     //debug: true
   }, done );
-} );
+}
 
-gulp.task( 'run:dev', [ 'mongo', 'api' ] );
+const generateDoc = gulp.parallel( doc )
+generateDoc.description = 'generate api doc'
+
+const server = gulp.parallel( mongo, api );
+server.description = "run the server"
+
+const defaultTasks = gulp.parallel( server )
+export default defaultTasks
+
+export {
+  server,
+  generateDoc
+}
