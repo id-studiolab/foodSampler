@@ -24,7 +24,8 @@ gulp.task( 'apidoc', function( done ) {
   apidoc( {
     src: "./",
     dest: "./doc",
-    includeFilters: [ "src/controllers.*\\.js$" ]
+    includeFilters: [ "src/controllers.*\\.js$" ],
+    //debug: true
   }, done );
 } );
 
