@@ -1,0 +1,16 @@
+Id;Designator;Package;Quantity;Designation;Supplier and ref;;
+1;J00;PinHeader_1x16_P2.54mm_Vertical_SMD_Pin1Left;1;Conn_01x16;2847179;;
+2;C10,C20,C30,C40,C50,C60,C70,C80;C_0603_1608Metric;8;100nF;;;
+3;R10,R20,R30,R40,R50,R60,R70,R03,R82,R04;R_0603_1608Metric;10;10K;;;
+4;R11,R21,R31,R41,R51,R61,R71;R_0603_1608Metric;7;82R;;;
+5;SW10,SW20,SW30,SW40,SW50,SW60,SW70;MICRO_SW_LED;7;SWITCH_SPST_LED;;;
+6;U00;Adafruit Feather LORA;1;Adafruit_Feather_Lora;;;
+7;REF**;LIPO_3V7_2A_50x60;1;LIPO_3V7_2A_50x60;;;
+8;J01;PinHeader_1x12_P2.54mm_Vertical_SMD_Pin1Left;1;Conn_01x12;;;
+9;R80,R81;R_0603_1608Metric;2;4K7;;;
+10;U80;SOIC-8_3.9x4.9mm_P1.27mm;1;DS3231MZ;2515358;;
+11;D00;LED_1206_3216Metric;1;LED_Small;2064722;;
+12;BT80;CH291-1220LF;1;Battery_Cell;;;
+13;Q00;SOT-23;1;BSS138;;;
+14;REF**,REF**,REF**,REF**;MountingHole_3.2mm_M3_DIN965;4;MountingHole_3.2mm_M3_DIN965;;;
+15;REF**,REF**;Fiducial_1mm_Dia_2.54mm_Outer_CopperBottom;2;Fiducial_1mm_Dia_2.54mm_Outer_CopperBottom;;;

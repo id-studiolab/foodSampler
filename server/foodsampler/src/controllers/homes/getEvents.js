@@ -25,6 +25,7 @@ const getEvents = ( { Home, Device, Event }, { config } ) => async ( req, res, n
         path: 'devices',
         populate: {
           path: 'events',
+          match: { btn_pressed: { $ne: null } },
         }
       } )
 

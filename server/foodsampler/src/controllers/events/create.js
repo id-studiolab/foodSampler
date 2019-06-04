@@ -3,9 +3,10 @@
  * @apiName addEvent
  * @apiGroup Event
  *
- * @apiParam {String} [device_id] the id of the home where the event is installed.
+ * @apiParam {String} [device_EUI] the EUI of the device.
  * @apiParam {String} [event_time] the label of the 1st button.
  * @apiParam {Number} [btn_pressed] the label of the 2nd button.
+ * @apiParam {Number} [battery_voltage] the battery status.
  *
  * @apiSuccess {String[]} the data of the house just added to the db.
  * @apiSuccessExample {json} Success-Response:
@@ -37,14 +38,22 @@ const create = ( { Event, Device }, { config } ) => async ( req, res, next ) => 
     const event = new Event();
     _.extend( event, req.body );
 
-    const device = await Device.findOne( event.device_id );
-    device.events.push( event );
+    const device = await Device.findOne( { device_EUI: event.device_EUI } );
 
-    await device.save();
+    if ( !device ) {
+      console.error( "device is not registered on db" )
+    } else {
+      //console.log( "found device: ", device );
+      device.events.push( event );
 
-    await event.save();
+      await device.save();
 
-    return sendOne( res, { event } );
+      await event.save();
+
+      return sendOne( res, { event } );
+    }
+
+
   } catch ( error ) {
     next( error );
   }

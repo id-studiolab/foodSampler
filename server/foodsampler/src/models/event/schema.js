@@ -14,10 +14,13 @@ const schema = new Schema( {
   },
   btn_pressed: {
     type: Number,
+  },
+  battery_voltage: {
+    type: Number,
     required: [ true ],
   },
-  device_id: {
-    type: ObjectId,
+  device_EUI: {
+    type: String,
     ref: 'Device',
     required: [ true ],
   },
