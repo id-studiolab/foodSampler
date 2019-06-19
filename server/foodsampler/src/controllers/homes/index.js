@@ -1,4 +1,5 @@
 const { Router: router } = require( 'express' );
+const { authenticate } = require( '../../middleware' );
 
 const { get } = require( './get' );
 const { getEvents } = require( './getEvents' );
@@ -10,11 +11,11 @@ const { remove } = require( './remove' );
 module.exports = ( models, { config } ) => {
   const api = router();
 
-  api.get( '/', list( models, { config } ) );
-  api.get( '/:_id', get( models, { config } ) );
-  api.get( '/:_id/events', getEvents( models, { config } ) );
-  api.post( '/', create( models, { config } ) );
-  api.patch( '/:_id', update( models, { config } ) );
-  api.delete( '/:_id', remove( models, { config } ) );
+  api.get( '/', authenticate, list( models, { config } ) );
+  api.get( '/:_id', authenticate, get( models, { config } ) );
+  api.get( '/:_id/events', authenticate, getEvents( models, { config } ) );
+  api.post( '/', authenticate, create( models, { config } ) );
+  api.patch( '/:_id', authenticate, update( models, { config } ) );
+  api.delete( '/:_id', authenticate, remove( models, { config } ) );
   return api;
 };

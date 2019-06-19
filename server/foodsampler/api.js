@@ -2,11 +2,13 @@ const createError = require( 'http-errors' );
 const express = require( 'express' );
 const path = require( 'path' );
 const cookieParser = require( 'cookie-parser' );
-const config = require( './config' );
+require( 'dotenv' ).config();
+const { config } = require( './config' );
 const { MongoManager } = require( './src/mongo' );
 const api = require( './src/api' );
 const app = express();
-const mongoManager = new MongoManager( config );
+const { mongoManager } = require( './src/mongo' );
+const { passport } = require( './src/passport' );
 
 
 // view engine setup

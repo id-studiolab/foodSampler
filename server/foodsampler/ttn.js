@@ -1,14 +1,14 @@
 var request = require( "request" );
 
-const config = require( './config' );
+const { config } = require( './config' );
 
 var mqttClient = require( './mqtt_client' );
 
 //this is to receive data from TTN
 const ttn = require( 'ttn' );
 const key = ttn.key;
-var appID = config.TTN_APPID;
-var accessKey = config.TTN_ACCESSKEY;
+var appID = config.ttn.TTN_APPID;
+var accessKey = config.ttn.TTN_ACCESSKEY;
 
 var os = require( "os" );
 var hostname = os.hostname();

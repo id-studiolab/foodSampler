@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
+const mongoose = require( 'mongoose' );
 
 class MongoManager {
-  constructor (config) {
-    this._config = config;
+  constructor() {
+
   }
   getMongoUrl() {
-    return this._config.MONGODB_URI;
+    return process.env.MONGODB_URI;
   }
-  connect () {
-    return mongoose.connect(this.getMongoUrl(),{
-      useNewUrlParser: true
-    });
+  connect() {
+    return mongoose.connect( this.getMongoUrl(), { useNewUrlParser: true } );
   }
 }
 
-module.exports = { MongoManager };
+const mongoManager = new MongoManager();
+
+module.exports = { mongoManager };

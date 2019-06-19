@@ -35,13 +35,13 @@ const doc = ( done ) => {
 const generateDoc = gulp.parallel( doc )
 generateDoc.description = 'generate api doc'
 
-const server = gulp.parallel( mongo, api );
-server.description = "run the server"
+const dev = gulp.parallel( mongo, api );
+dev.description = "run the server"
 
-const defaultTasks = gulp.parallel( server )
+const defaultTasks = gulp.parallel( dev )
 export default defaultTasks
 
 export {
-  server,
+  dev,
   generateDoc
 }
