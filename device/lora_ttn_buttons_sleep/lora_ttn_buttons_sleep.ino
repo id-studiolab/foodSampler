@@ -33,6 +33,28 @@
 #include <lmic.h>
 #include <hal/hal.h>
 #include <SPI.h>
+#include "ArduinoLowPower.h"
+
+#define BUT0   A0
+#define BUT1   A1
+#define BUT2   A2
+#define BUT3   A3
+#define BUT4   A4
+#define BUT5   A5
+#define BUT6    5
+#define BATPIN A7   
+#define LED    13
+
+bool buttonFlag = false;
+bool wakeUpFlag = false;
+
+// Schedule TX every this many seconds (might become longer due to duty
+// cycle limitations).
+const unsigned TX_INTERVAL = 180;
+
+const int HEARTBEAT_INTERVAL = 600000;  //in milliseconds
+
+
 
 // This EUI must be in little-endian format, so least-significant-byte
 // first. When copying an EUI from ttnctl output, this means to reverse
@@ -51,12 +73,10 @@ void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
 static const u1_t PROGMEM APPKEY[16] = { 0x6B, 0x15, 0x15, 0x95, 0xEE, 0xEE, 0xB3, 0xF5, 0xA3, 0x50, 0xD9, 0x12, 0xC3, 0x0E, 0x86, 0xAF };
 void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
 
-static uint8_t mydata[] = { 0x0D, 0x17, 0x04, 0x05 };
+static uint8_t mydata[3];
 static osjob_t sendjob;
 
-// Schedule TX every this many seconds (might become longer due to duty
-// cycle limitations).
-const unsigned TX_INTERVAL = 180;
+
 
 
 // Pin mapping for Adafruit Feather M0 LoRa
@@ -116,6 +136,14 @@ void onEvent (ev_t ev) {
             // during join, but because slow data rates change max TX
 	    // size, we don't use it in this example.
             LMIC_setLinkCheckMode(0);
+
+            for(int i = 5; i > 0; i--){
+              digitalWrite(LED,HIGH);
+              delay(500);
+              digitalWrite(LED,LOW);
+              delay(500);
+            }  
+              
             break;
         /*
         || This event is defined but not used in the code. No
@@ -141,7 +169,24 @@ void onEvent (ev_t ev) {
               Serial.println(F(" bytes of payload"));
             }
             // Schedule next transmission
+
+            // go to sleep mode here.
+            
+            
             os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
+            Serial.println("sleepy time");
+            USBDevice.detach();
+            digitalWrite(LED, LOW);
+            LowPower.deepSleep(HEARTBEAT_INTERVAL);
+
+            wakeUpTimeOut();
+            
+            //send out hearbeat
+            //mydata[3] =  128;
+            //do_send(&sendjob);
+            
+            //Serial.println("WAKE UP!!!!");
+            
             break;
         case EV_LOST_TSYNC:
             Serial.println(F("EV_LOST_TSYNC"));
@@ -183,7 +228,7 @@ void do_send(osjob_t* j){
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
         // Prepare upstream data transmission at the next possible time.
-        LMIC_setTxData2(1, mydata, sizeof(mydata)-1, 0);
+        LMIC_setTxData2(1, mydata, sizeof(mydata), 0);
         Serial.println(F("Packet queued"));
     }
     // Next TX is scheduled after TX_COMPLETE event.
@@ -191,18 +236,36 @@ void do_send(osjob_t* j){
 
 void setup() {
 
-    while (!Serial);
+    //while (!Serial);
     
     Serial.begin(9600);
     Serial.println(F("Starting"));
 
-    #ifdef VCC_ENABLE
-    // For Pinoccio Scout boards
-    pinMode(VCC_ENABLE, OUTPUT);
-    digitalWrite(VCC_ENABLE, HIGH);
-    delay(1000);
-    #endif
+    pinMode(BUT0, INPUT);
+    pinMode(BUT1, INPUT);
+    pinMode(BUT2, INPUT);
+    pinMode(BUT3, INPUT);
+    pinMode(BUT4, INPUT);
+    pinMode(BUT5, INPUT);
+    pinMode(BUT6, INPUT);
+    pinMode(LED, OUTPUT);
+    pinMode(BATPIN, INPUT);
 
+    digitalWrite(LED, HIGH);
+
+    //attachInterrupt(digitalPinToInterrupt(BUT0), readButtons, RISING);
+    
+    LowPower.attachInterruptWakeup(BUT0, wakeUpButton, RISING);
+    LowPower.attachInterruptWakeup(BUT1, wakeUpButton, RISING); 
+    LowPower.attachInterruptWakeup(BUT2, wakeUpButton, RISING); 
+    LowPower.attachInterruptWakeup(BUT3, wakeUpButton, RISING); 
+    LowPower.attachInterruptWakeup(BUT4, wakeUpButton, RISING); 
+    LowPower.attachInterruptWakeup(BUT5, wakeUpButton, RISING); 
+    LowPower.attachInterruptWakeup(BUT6, wakeUpButton, RISING);  
+    
+
+    Serial.print("Battery: "); Serial.print(readBattery()); Serial.println(" mV");
+    
     // LMIC init
     os_init();
     // Reset the MAC state. Session and pending data transfers will be discarded.
@@ -212,6 +275,73 @@ void setup() {
     do_send(&sendjob);
 }
 
+volatile int buttons = 0;
+
 void loop() {
     os_runloop_once();
+
+    if( buttonFlag ){
+      //noInterrupts();
+      digitalWrite(LED, HIGH);
+      buttonFlag = false;
+      
+      //delay(20); //just to do some debouncing
+          
+      buttons |= (digitalRead(BUT0));
+      buttons |= (digitalRead(BUT1)) << 1;
+      buttons |= (digitalRead(BUT2)) << 2;
+      buttons |= (digitalRead(BUT3)) << 3;
+      buttons |= (digitalRead(BUT4)) << 4;
+      buttons |= (digitalRead(BUT5)) << 5;
+      buttons |= (digitalRead(BUT6)) << 6;
+      //delay(50);
+      //interrupts();
+      //Serial.println(buttons);
+      
+      uint16_t bat = readBattery();
+      mydata[0] = bat >> 8;
+      mydata[1] = bat;
+      mydata[2] = buttons;
+      buttons = 0x00;
+      do_send(&sendjob);
+    }
+   
+   if( wakeUpFlag && !buttonFlag ){
+      wakeUpFlag = false;
+      mydata[2] = 0;
+      do_send(&sendjob);
+        
+      digitalWrite(LED,HIGH);
+      delay(500);
+      digitalWrite(LED,LOW);
+      delay(500);
+      digitalWrite(LED,HIGH);
+      delay(500);
+      digitalWrite(LED,LOW); 
+   }
+}
+
+void wakeUpTimeOut(){
+  if( !buttonFlag  ){
+    wakeUpFlag =  true;
+  }
+  //USBDevice.attach();
+  //Serial.println("Wake up done");
+}
+
+void wakeUpButton(){
+  //digitalWrite(LED, HIGH);
+  buttonFlag = true;
+}
+
+
+uint16_t readBattery(){
+  float measuredvbat = analogRead(BATPIN);
+  
+  measuredvbat *= 2;    // we divided by 2, so multiply back
+  measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
+  measuredvbat /= 1024; // convert to voltage
+  uint16_t batVoltage = measuredvbat *= 1000;
+  //Serial.print("VBat: " ); Serial.println(batVoltage);
+  return( batVoltage ); 
 }
