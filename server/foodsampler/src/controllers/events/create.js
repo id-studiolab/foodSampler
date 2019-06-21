@@ -42,6 +42,8 @@ const create = ( { Event, Device }, { config } ) => async ( req, res, next ) => 
 
     if ( !device ) {
       console.error( "device is not registered on db" )
+      return sendOne( res, "device is not registered on db" );
+
     } else {
       //console.log( "found device: ", device );
       device.events.push( event );
