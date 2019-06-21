@@ -55,7 +55,13 @@
 
 #define LED    13
 
-#define FOODSAMPLER_ID 1
+
+
+#define FOODSAMPLER_ID 3
+#define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
+
+#define DEBUG 1
+
 
 bool buttonFlag = false;
 bool wakeUpFlag = false;
@@ -64,7 +70,7 @@ bool wakeUpFlag = false;
 // cycle limitations).
 const unsigned TX_INTERVAL = 180;
 
-const int HEARTBEAT_INTERVAL = 600000;  //in milliseconds
+
 
 
 
@@ -92,6 +98,23 @@ void os_getDevKey (u1_t* buf) {
 static uint8_t mydata[3];
 static osjob_t sendjob;
 
+void connectFlash( void ){
+  for(int i = 3; i > 0; i--) {
+      digitalWrite(LED,HIGH);
+      delay(1000);
+      digitalWrite(LED,LOW);
+      delay(1000);
+  }
+}
+
+void sendFlash( void ){
+  for(int i = 5; i > 0; i--) {
+    digitalWrite(LED,HIGH);
+    delay(100);
+    digitalWrite(LED,LOW);
+    delay(300);
+  } 
+}
 
 // Pin mapping for Adafruit Feather M0 LoRa
 const lmic_pinmap lmic_pins = {
@@ -151,12 +174,8 @@ void onEvent (ev_t ev) {
 		// size, we don't use it in this example.
 		LMIC_setLinkCheckMode(0);
 
-		for(int i = 5; i > 0; i--) {
-			digitalWrite(LED,HIGH);
-			delay(500);
-			digitalWrite(LED,LOW);
-			delay(500);
-		}
+		connectFlash();
+		
 
 		break;
 	/*
@@ -244,8 +263,10 @@ void do_send(osjob_t* j){
 
 void setup() {
 
-	// while (!Serial);
-
+  if(DEBUG){
+    while (!Serial);
+  }
+  
 	Serial.begin(9600);
 	Serial.println(F("Starting"));
 
@@ -275,8 +296,6 @@ void setup() {
 
 	pinMode(BATPIN, INPUT);
 
-	digitalWrite(LED7, HIGH);
-
 	LowPower.attachInterruptWakeup(BUT1, wakeUpButton, FALLING);
 	LowPower.attachInterruptWakeup(BUT2, wakeUpButton, FALLING);
 	LowPower.attachInterruptWakeup(BUT3, wakeUpButton, FALLING);
@@ -295,6 +314,7 @@ void setup() {
 
 	// Start job (sending automatically starts OTAA too)
 	do_send(&sendjob);
+  //sendFlash();
 }
 
 volatile int buttons = 0;
@@ -329,6 +349,7 @@ void loop() {
 		Serial.println(mydata[2]);
 		Serial.println();
 		do_send(&sendjob);
+    sendFlash();
 	}
 
 	if( wakeUpFlag && !buttonFlag ) {
@@ -336,13 +357,8 @@ void loop() {
 		mydata[2] = 0;
 		do_send(&sendjob);
 
-		digitalWrite(LED,HIGH);
-		delay(500);
-		digitalWrite(LED,LOW);
-		delay(500);
-		digitalWrite(LED,HIGH);
-		delay(500);
-		digitalWrite(LED,LOW);
+    sendFlash();
+		
 	}
 }
 
@@ -358,6 +374,7 @@ void wakeUpButton(){
 	//digitalWrite(LED, HIGH);
 	buttonFlag = true;
 }
+
 
 
 uint16_t readBattery(){
