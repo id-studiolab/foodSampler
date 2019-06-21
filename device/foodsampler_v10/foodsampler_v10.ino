@@ -270,8 +270,6 @@ void setup() {
 
     pinMode(BATPIN, INPUT);
 
-    digitalWrite(LED7, HIGH);
-
     LowPower.attachInterruptWakeup(BUT1, wakeUpButton, FALLING);
     LowPower.attachInterruptWakeup(BUT2, wakeUpButton, FALLING); 
     LowPower.attachInterruptWakeup(BUT3, wakeUpButton, FALLING); 
