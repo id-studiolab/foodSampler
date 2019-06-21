@@ -36,6 +36,22 @@
 #include "ArduinoLowPower.h"
 #include "auth.h"
 
+
+#define FOODSAMPLER_ID 3
+#define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
+#define DEBUG 1
+
+#define SETCLOCK 1
+
+#define YEAR  2019
+#define MONTH    6
+#define DAY     21
+#define HOUR    16 
+#define MIN     41
+#define SEC      0
+
+RTCZero rtc;
+
 #define BUT1   5
 #define BUT2   11
 #define BUT3   0
@@ -54,13 +70,6 @@
 #define LED7   A0
 
 #define LED    13
-
-
-
-#define FOODSAMPLER_ID 3
-#define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
-
-#define DEBUG 1
 
 
 bool buttonFlag = false;
@@ -207,13 +216,15 @@ void onEvent (ev_t ev) {
 
 		os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
 
-		Serial.println("sleepy time");
-		USBDevice.detach();
-		digitalWrite(LED, LOW);
-		LowPower.deepSleep(HEARTBEAT_INTERVAL);
-
-		wakeUpTimeOut();
-
+    //disable sleep during debug to keep serial running
+		if(!DEBUG){
+		  Serial.println("sleepy time");
+		  USBDevice.detach();
+		  digitalWrite(LED, LOW);
+		  LowPower.deepSleep(HEARTBEAT_INTERVAL);
+		  wakeUpTimeOut();
+    }
+      
 		break;
 	case EV_LOST_TSYNC:
 		Serial.println(F("EV_LOST_TSYNC"));
@@ -306,7 +317,14 @@ void setup() {
 
 	Serial.print("Battery: "); Serial.print(readBattery()); Serial.println(" mV");
 
+  rtc.begin();
+  if( SETCLOCK ){
+    rtc.setDate( DAY, MONTH, YEAR );
+    rtc.setTime( HOUR, MIN, SEC );
+  }
+  
 
+  
 	// LMIC init
 	os_init();
 	// Reset the MAC state. Session and pending data transfers will be discarded.
@@ -345,6 +363,8 @@ void loop() {
 		mydata[1] = bat;
 		mydata[2] = buttons;
 		buttons = 0x00;
+    Serial.print(rtc.getYear()+1984);Serial.print("/");Serial.print(rtc.getMonth());Serial.print("/");Serial.print(rtc.getDay());Serial.print(" ");
+    Serial.print(rtc.getHours());Serial.print(":");Serial.print(rtc.getMinutes());Serial.print(":");Serial.println(rtc.getSeconds());
 		Serial.println(mydata[0]*256+mydata[1]);
 		Serial.println(mydata[2]);
 		Serial.println();
