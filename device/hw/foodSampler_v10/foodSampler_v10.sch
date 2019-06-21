@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:foodSampler_v10-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L _switch:SWITCH_SPST_LED SW10
+L foodSampler_v10-rescue:SWITCH_SPST_LED-_switch SW10
 U 1 1 5CDD103B
 P 7500 1400
 F 0 "SW10" H 7500 1847 50  0000 C CNN
@@ -135,7 +135,7 @@ Wire Wire Line
 Wire Wire Line
 	3050 3350 3550 3350
 $Comp
-L _switch:SWITCH_SPST_LED SW20
+L foodSampler_v10-rescue:SWITCH_SPST_LED-_switch SW20
 U 1 1 5CDDEAD7
 P 7500 2750
 F 0 "SW20" H 7500 3197 50  0000 C CNN
@@ -218,7 +218,7 @@ LED2
 Wire Wire Line
 	7100 2950 6950 2950
 $Comp
-L _switch:SWITCH_SPST_LED SW30
+L foodSampler_v10-rescue:SWITCH_SPST_LED-_switch SW30
 U 1 1 5CDDF1C9
 P 7500 4100
 F 0 "SW30" H 7500 4547 50  0000 C CNN
@@ -301,7 +301,7 @@ LED3
 Wire Wire Line
 	7100 4300 6950 4300
 $Comp
-L _switch:SWITCH_SPST_LED SW40
+L foodSampler_v10-rescue:SWITCH_SPST_LED-_switch SW40
 U 1 1 5CDDF205
 P 7500 5450
 F 0 "SW40" H 7500 5897 50  0000 C CNN
@@ -384,7 +384,7 @@ LED4
 Wire Wire Line
 	7100 5650 6950 5650
 $Comp
-L _switch:SWITCH_SPST_LED SW50
+L foodSampler_v10-rescue:SWITCH_SPST_LED-_switch SW50
 U 1 1 5CDE0D3C
 P 9900 1400
 F 0 "SW50" H 9900 1847 50  0000 C CNN
@@ -467,7 +467,7 @@ LED5
 Wire Wire Line
 	9500 1600 9350 1600
 $Comp
-L _switch:SWITCH_SPST_LED SW60
+L foodSampler_v10-rescue:SWITCH_SPST_LED-_switch SW60
 U 1 1 5CDE0D78
 P 9900 2750
 F 0 "SW60" H 9900 3197 50  0000 C CNN
@@ -550,7 +550,7 @@ LED6
 Wire Wire Line
 	9500 2950 9350 2950
 $Comp
-L _switch:SWITCH_SPST_LED SW70
+L foodSampler_v10-rescue:SWITCH_SPST_LED-_switch SW70
 U 1 1 5CDE0DB4
 P 9900 4100
 F 0 "SW70" H 9900 4547 50  0000 C CNN
@@ -769,17 +769,6 @@ Wire Wire Line
 Wire Wire Line
 	3450 4450 3550 4450
 $Comp
-L Connector_Generic:Conn_01x16 J00
-U 1 1 5CE73B0E
-P 3750 3950
-F 0 "J00" H 3700 4900 50  0000 L CNN
-F 1 "Conn_01x16" H 3500 4800 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical_SMD_Pin1Left" H 3750 3950 50  0001 C CNN
-F 3 "~" H 3750 3950 50  0001 C CNN
-	1    3750 3950
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector_Generic:Conn_01x12 J01
 U 1 1 5CE741DD
 P 4450 4150
@@ -799,7 +788,7 @@ LED1
 Text GLabel 4800 4050 2    50   Input ~ 0
 LED2
 $Comp
-L _arduino_shieldsNCL:Adafruit_Feather_Lora U00
+L foodSampler_v10-rescue:Adafruit_Feather_Lora-_arduino_shieldsNCL U00
 U 1 1 5CDDC437
 P 2400 5900
 F 0 "U00" H 2400 7017 50  0000 C CNN
@@ -1134,4 +1123,71 @@ Wire Wire Line
 	5100 4950 5100 4450
 Wire Wire Line
 	4650 4450 5100 4450
+$Comp
+L Connector_Generic:Conn_01x16 J00
+U 1 1 5CE73B0E
+P 3750 3950
+F 0 "J00" H 3700 4900 50  0000 L CNN
+F 1 "Conn_01x16" H 3500 4800 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical_SMD_Pin1Left" H 3750 3950 50  0001 C CNN
+F 3 "~" H 3750 3950 50  0001 C CNN
+	1    3750 3950
+	1    0    0    -1  
+$EndComp
+Text Notes 4250 3950 0    50   ~ 0
+13
+Text Notes 4250 4050 0    50   ~ 0
+12
+Text Notes 4250 4150 0    50   ~ 0
+11
+Text Notes 4250 4250 0    50   ~ 0
+10
+Text Notes 4300 4350 0    50   ~ 0
+9
+Text Notes 4300 4450 0    50   ~ 0
+6
+Text Notes 4300 4550 0    50   ~ 0
+5
+Text Notes 4250 4650 0    50   ~ 0
+21
+Text Notes 4250 4750 0    50   ~ 0
+20
+Text Notes 3850 4750 0    50   ~ 0
+batt
+Text Notes 3850 4650 0    50   ~ 0
+1-TX1\n
+Text Notes 3850 4550 0    50   ~ 0
+0-RX1
+Text Notes 3850 4450 0    50   ~ 0
+22-MISO\n
+Text Notes 3850 4350 0    50   ~ 0
+23-MOSI
+Text Notes 3850 4250 0    50   ~ 0
+24-SCK
+Text Notes 3850 4150 0    50   ~ 0
+A5
+Text Notes 3850 4050 0    50   ~ 0
+A4\n
+Text Notes 3850 3950 0    50   ~ 0
+A3\n
+Text Notes 3850 3750 0    50   ~ 0
+A1\n
+Text Notes 3850 3650 0    50   ~ 0
+A0
+Text Notes 3850 3550 0    50   ~ 0
+GND
+Text Notes 3850 3450 0    50   ~ 0
+AREF
+Text Notes 3850 3350 0    50   ~ 0
+3V
+Text Notes 3850 3250 0    50   ~ 0
+RST
+Text Notes 3850 3850 0    50   ~ 0
+A2\n
+Text Notes 4150 3850 0    50   ~ 0
+VUSB
+Text Notes 4250 3750 0    50   ~ 0
+EN
+Text Notes 4150 3650 0    50   ~ 0
+VBATT\n
 $EndSCHEMATC
