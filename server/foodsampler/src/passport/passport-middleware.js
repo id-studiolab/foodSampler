@@ -19,7 +19,6 @@ const generateAccessToken = ( req, res, next ) => {
   next();
 };
 
-
 module.exports = {
   authenticate,
   generateAccessToken,
