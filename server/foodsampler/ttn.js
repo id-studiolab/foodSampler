@@ -9,6 +9,7 @@ const ttn = require( 'ttn' );
 const key = ttn.key;
 var appID = config.ttn.TTN_APPID;
 var accessKey = config.ttn.TTN_ACCESSKEY;
+var bearertoken = config.BEARER_TOKEN;
 
 var os = require( "os" );
 var hostname = os.hostname();
@@ -62,13 +63,14 @@ saveEventToDB = function( deviceEUI, buttonPressed, time, battery_voltage ) {
     method: 'POST',
     url: host + ':' + port + '/api/v1/events/ ',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + bearertoken,
     },
     form: {
       device_EUI: deviceEUI,
       btn_pressed: buttonPressed,
       event_time: time,
-      battery_voltage: battery_voltage
+      battery_voltage: battery_voltage,
     }
   };
 

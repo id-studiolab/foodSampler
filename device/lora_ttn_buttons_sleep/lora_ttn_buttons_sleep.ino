@@ -35,26 +35,29 @@
 #include <SPI.h>
 #include "ArduinoLowPower.h"
 
-#define BUT0   A0
-#define BUT1   A1
-#define BUT2   A2
-#define BUT3   A3
-#define BUT4   A4
-#define BUT5   A5
-#define BUT6    5
+#define BUT0   A7
+#define BUT1   11
+#define BUT2   0
+#define BUT3   1
+#define BUT4   A5
+#define BUT5   A3
+#define BUT6   A1
 #define BATPIN A7   
 #define LED    13
 
+
+int buttonPins[]={BUT0,BUT1,BUT2,BUT3,BUT4,BUT5,BUT6};
+
 bool buttonFlag = false;
 bool wakeUpFlag = false;
+
+bool joinedNetwork=false;
 
 // Schedule TX every this many seconds (might become longer due to duty
 // cycle limitations).
 const unsigned TX_INTERVAL = 180;
 
 const int HEARTBEAT_INTERVAL = 600000;  //in milliseconds
-
-
 
 // This EUI must be in little-endian format, so least-significant-byte
 // first. When copying an EUI from ttnctl output, this means to reverse
@@ -110,6 +113,7 @@ void onEvent (ev_t ev) {
             Serial.println(F("EV_JOINING"));
             break;
         case EV_JOINED:
+            joinedNetwork=true;
             Serial.println(F("EV_JOINED"));
             {
               u4_t netid = 0;
@@ -143,7 +147,7 @@ void onEvent (ev_t ev) {
               digitalWrite(LED,LOW);
               delay(500);
             }  
-              
+
             break;
         /*
         || This event is defined but not used in the code. No
@@ -174,19 +178,20 @@ void onEvent (ev_t ev) {
             
             
             os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
-            Serial.println("sleepy time");
-            USBDevice.detach();
-            digitalWrite(LED, LOW);
-            LowPower.deepSleep(HEARTBEAT_INTERVAL);
-
-            wakeUpTimeOut();
+//            Serial.println("sleepy time");          
+//            USBDevice.detach();
+//            digitalWrite(LED, LOW);
+//            LowPower.deepSleep(HEARTBEAT_INTERVAL);
+//            wakeUpTimeOut();
             
             //send out hearbeat
             //mydata[3] =  128;
             //do_send(&sendjob);
             
             //Serial.println("WAKE UP!!!!");
-            
+
+             Serial.println("I just completed sending the data");
+
             break;
         case EV_LOST_TSYNC:
             Serial.println(F("EV_LOST_TSYNC"));
@@ -223,6 +228,8 @@ void onEvent (ev_t ev) {
 }
 
 void do_send(osjob_t* j){
+     Serial.println("I'm about to send");
+
     // Check if there is not a current TX/RX job running
     if (LMIC.opmode & OP_TXRXPEND) {
         Serial.println(F("OP_TXRXPEND, not sending"));
@@ -236,30 +243,26 @@ void do_send(osjob_t* j){
 
 void setup() {
 
-    //while (!Serial);
+    while (!Serial);
     
     Serial.begin(9600);
     Serial.println(F("Starting"));
 
-    pinMode(BUT0, INPUT);
-    pinMode(BUT1, INPUT);
-    pinMode(BUT2, INPUT);
-    pinMode(BUT3, INPUT);
-    pinMode(BUT4, INPUT);
-    pinMode(BUT5, INPUT);
-    pinMode(BUT6, INPUT);
+    for (int i = 0; i < 7; i++) {
+      pinMode(buttonPins[i], INPUT_PULLUP);
+    }
+
     pinMode(LED, OUTPUT);
-    pinMode(BATPIN, INPUT);
 
     digitalWrite(LED, HIGH);
 
     //attachInterrupt(digitalPinToInterrupt(BUT0), readButtons, RISING);
     
-    LowPower.attachInterruptWakeup(BUT0, wakeUpButton, RISING);
+ //   LowPower.attachInterruptWakeup(BUT0, wakeUpButton, RISING);
     LowPower.attachInterruptWakeup(BUT1, wakeUpButton, RISING); 
     LowPower.attachInterruptWakeup(BUT2, wakeUpButton, RISING); 
     LowPower.attachInterruptWakeup(BUT3, wakeUpButton, RISING); 
-    LowPower.attachInterruptWakeup(BUT4, wakeUpButton, RISING); 
+//    LowPower.attachInterruptWakeup(BUT4, wakeUpButton, RISING); 
     LowPower.attachInterruptWakeup(BUT5, wakeUpButton, RISING); 
     LowPower.attachInterruptWakeup(BUT6, wakeUpButton, RISING);  
     
@@ -279,6 +282,8 @@ volatile int buttons = 0;
 
 void loop() {
     os_runloop_once();
+    readButtons();
+    readBattery();
 
     if( buttonFlag ){
       //noInterrupts();
@@ -334,14 +339,26 @@ void wakeUpButton(){
   buttonFlag = true;
 }
 
+void readButtons(){
+  for (int i=0; i<7; i++){
+    int val=digitalRead(buttonPins[i]);
+    Serial.print(val);
+    Serial.print(" - ");
+  }
+      Serial.println();
+}
+
 
 uint16_t readBattery(){
+  
   float measuredvbat = analogRead(BATPIN);
   
   measuredvbat *= 2;    // we divided by 2, so multiply back
   measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
   measuredvbat /= 1024; // convert to voltage
   uint16_t batVoltage = measuredvbat *= 1000;
-  //Serial.print("VBat: " ); Serial.println(batVoltage);
+  Serial.print("VBat: " ); Serial.println(batVoltage);
   return( batVoltage ); 
+
+
 }
