@@ -35,10 +35,10 @@ module.exports = ( models, { config } ) => {
     generateAccessToken,
     signIn );
 
-  // api.post( '/sign-up', signUp( models, { config } ),
-  //   passport.authenticate( 'local', { session: false, scope: [] } ),
-  //   generateAccessToken,
-  //   signIn );
+  api.post( '/sign-up', signUp( models, { config } ),
+    passport.authenticate( 'local', { session: false, scope: [] } ),
+    generateAccessToken,
+    signIn );
 
   api.post( '/sign-out', authenticate, signOut );
 
