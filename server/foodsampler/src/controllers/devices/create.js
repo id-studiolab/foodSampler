@@ -30,18 +30,15 @@
  *      }
  * }
  * @apiExample {curl} Example usage:
- *    curl -X POST \
- *   http://127.0.0.1:3000/api/v1/devices/ \
- *   -H 'Cache-Control: no-cache' \
- *   -H 'Connection: keep-alive' \
- *   -H 'Content-Type: application/x-www-form-urlencoded' \
- *   -H 'Host: 127.0.0.1:3000' \
- *   -H 'Postman-Token: 6b4bd329-40d9-4b69-a212-9ec07484f59a,8ee444c0-c62f-4c78-b9ec-49c1ada45805' \
- *   -H 'User-Agent: PostmanRuntime/7.11.0' \
- *   -H 'accept-encoding: gzip, deflate' \
- *   -H 'cache-control: no-cache' \
- *   -H 'content-length: 166' \
- *   -d 'homeId=5cdbdf1da63d7936c23bb30f&device_EUI=00603718517107D&label_btn_1=btn_1&label_btn_2=btn_2&label_btn_3=btn_3&label_btn_4=btn_4&label_btn_5=btn_6&label_btn_6=btn_7'
+ *  curl -X POST \
+ *    https://foodsampler.herokuapp.com/api/v1/devices \
+ *    -H 'Accept: *\/*' \
+ *    -H 'Authorization: Bearer  * eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMTlmZDBiZDNkMTQ4MDAxNzFlY2ExOCIsImlhdCI6MTU2MTk4NzU1NSwiZXhwIjoxNTY0NTc5NTU1fQ.LYshWrnx6VhmR_vSYlwB882CoLk95Y0tzkjxeIfnuqY' \
+ *    -H 'Cache-Control: no-cache' \
+ *    -H 'Connection: keep-alive' \
+ *    -H 'Content-Type: application/x-www-form-urlencoded' \
+ *    -H 'Host: foodsampler.herokuapp.com' \
+ *    -d 'home_id=5d1a0b066cfdc10017e442c3&label_btn_1=pizza&label_btn_2=pasta&label_btn_3=mozzarelle&label_btn_4=vitello%20tonnato&label_btn_5=orecchiette&label_btn_6=salame&label_btn_7=babb%C3%A0&device_EUI=00603718517107d3'
  */
 
 const { NotAcceptable } = require( 'rest-api-errors' );

@@ -38,12 +38,15 @@
  *    ]
  *}
  * @apiExample {curl} Example usage:
- *    curl -X GET \
- *  'http://127.0.0.1:3000/api/v1/devices/?homeId=5cb7393217966a53ed44ce36' \
- *  -H 'Content-Type: application/x-www-form-urlencoded' \
- *  -H 'Postman-Token: 25e68ac2-448c-45e1-aaf9-c1afb7ba863e' \
- *  -H 'cache-control: no-cache' \
- *  -d undefined=
+ curl -X GET \
+   https://foodsampler.herokuapp.com/api/v1/devices \
+   -H 'Accept: *\/*' \
+   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMTlmZDBiZDNkMTQ4MDAxNzFlY2ExOCIsImlhdCI6MTU2MTk4NzU1NSwiZXhwIjoxNTY0NTc5NTU1fQ.LYshWrnx6VhmR_vSYlwB882CoLk95Y0tzkjxeIfnuqY' \
+   -H 'Cache-Control: no-cache' \
+   -H 'Connection: keep-alive' \
+   -H 'Content-Type: application/x-www-form-urlencoded' \
+   -H 'Host: foodsampler.herokuapp.com' \
+   -d 'nick_name=studiolab_test&address=TUDelft%20campus'
  */
 
 

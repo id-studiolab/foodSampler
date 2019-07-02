@@ -1,6 +1,6 @@
 /**
  * @api {get} /homes/:id/events getEventsByHome
- * @apiName getHomeByID
+ * @apiName getEventsByHomeID
  * @apiGroup Home
  *
  * @apiSuccess {Array} data about a home
@@ -84,6 +84,16 @@
  *         "__v": 1
  *     }
  * }
+ *
+ * @apiExample {curl} Example usage:
+ *  curl -X GET \
+ *    https://foodsampler.herokuapp.com/api/v1/homes/5d1a0b066cfdc10017e442c3/events \
+ *    -H 'Accept: *\/*' \
+ *    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMTlmZDBiZDNkMTQ4MDAxNzFlY2ExOCIsImlhdCI6MTU2MTk4NzU1NSwiZXhwIjoxNTY0NTc5NTU1fQ.LYshWrnx6VhmR_vSYlwB882CoLk95Y0tzkjxeIfnuqY' \
+ *    -H 'Cache-Control: no-cache' \
+ *    -H 'Connection: keep-alive' \
+ *    -H 'Content-Type: application/x-www-form-urlencoded' \
+ *    -H 'Host: foodsampler.herokuapp.com' \
  */
 
 const getEvents = ( { Home, Device, Event }, { config } ) => async ( req, res, next ) => {
@@ -96,7 +106,7 @@ const getEvents = ( { Home, Device, Event }, { config } ) => async ( req, res, n
         path: 'devices',
         populate: {
           path: 'events',
-          match: { btn_pressed: { $ne: null } },
+          match: { "btn_pressed": { $ne: null } },
         }
       } )
 

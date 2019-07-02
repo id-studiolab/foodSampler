@@ -19,19 +19,13 @@
  * }
  * @apiExample {curl} Example usage:
  *  curl -X POST \
- *    http://127.0.0.1:3000/api/v1/homes/ \
- *    -H 'Cache-Control: no-cache' \
- *    -H 'Connection: keep-alive' \
+ *    https://foodsampler.herokuapp.com/api/v1/homes \
+ *    -H 'Accept: *\/*' \
+ *    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMTlmZDBiZDNkMTQ4MDAxNzFlY2ExOCIsImlhdCI6MTU2MTk4NzU1NSwiZXhwIjoxNTY0NTc5NTU1fQ.LYshWrnx6VhmR_vSYlwB882CoLk95Y0tzkjxeIfnuqY' \
  *    -H 'Content-Type: application/x-www-form-urlencoded' \
- *    -H 'Host: 127.0.0.1:3000' \
- *    -H 'Postman-Token: b258f589-0e8a-4850-bcb7-7fb9695d8a36,fb76dbf3-fff7-41f1-af67-59b804ee732d' \
- *    -H 'User-Agent: PostmanRuntime/7.11.0' \
- *    -H 'accept-encoding: gzip, deflate' \
- *    -H 'cache-control: no-cache' \
- *    -H 'content-length: 49' \
+ *    -H 'Host: foodsampler.herokuapp.com' \
  *    -d 'nick_name=studiolab_test&address=TUDelft%20campus'
- */
-
+ **/
 
 
 const { NotAcceptable } = require( 'rest-api-errors' );

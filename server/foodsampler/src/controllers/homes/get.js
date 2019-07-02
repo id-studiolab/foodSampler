@@ -18,6 +18,15 @@
  *          }
  *      ]
  * }
+ * @apiExample {curl} Example usage:
+ *  curl -X GET \
+ *    https://foodsampler.herokuapp.com/api/v1/homes \
+ *    -H 'Accept: *\/*' \
+ *    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMTlmZDBiZDNkMTQ4MDAxNzFlY2ExOCIsImlhdCI6MTU2MTk4NzU1NSwiZXhwIjoxNTY0NTc5NTU1fQ.LYshWrnx6VhmR_vSYlwB882CoLk95Y0tzkjxeIfnuqY' \
+ *    -H 'Cache-Control: no-cache' \
+ *    -H 'Connection: keep-alive' \
+ *    -H 'Content-Type: application/x-www-form-urlencoded' \
+ *    -H 'Host: foodsampler.herokuapp.com' \
  */
 
 const get = ( { Home }, { config } ) => async ( req, res, next ) => {
