@@ -1,37 +1,14 @@
 # foodSampler
-technology in a soup
+Food sampler is a project to collect user data about their food consumption.
+It consist of a series of devices equipped with buttons who can send and save data to a server using Lora protocol.
 
-## 🎮 DEVICE
-the device is used to collect user input.
+## The device
+The devices are based on adafruit feather lora baord, and make use of a custom pcb.
+They run on buttery and try to send messages to the lora network every 10 minutes.
+once a button is pressed, they connect to the server and send out the data. A button cannot be pressed continuosly... a trasmission need to finish before a new message can be sent.
+Arduino code, pcb design and more information on how to configure the library can be found inside the device folder.
 
-##### components:
-- feather MO lora
-- Lipo Battery
-- 7 buttons
-- 7 leds
-- 1 plastic case
-
-#### TODO:
-- [ ] prototype device on breadboard
-- [ ] test lora communication with gateway
-- [ ] design pcb
-- [ ] design case
-
-## 📡 GATEWAY
-The gateway is a raspberrypi with a lora hat, it listen for messages from the lora gateway and then publishes the data to the server.
-
-#### TODO:
-- [ ] setup raspberrypi with ubuntu
-- [ ] test gateway with [node js sx127x library](https://github.com/sandeepmistry/node-sx127x)
-- [ ] test lora communication with the modules
-- [ ] develop lora to mqtt application
-
-## 💾 SERVER
-The server hosts a mqtt broker. Listens for incoming mqtt messages and saves the data to a mongodb DB. The data are accessible trough rest api
-
-#### TODO:
-- [ ] setup server (docker?)
-- [ ] configure mqtt broker
-- [ ] configure mongodb
-- [ ] develop mqtt to db code
-- [ ] develop rest api to read data from db
+## The server
+The device communicate via a gateway to the things network, each device need to be configured and provisioned via ttn platform before it can send data to the server.
+The server listens for incoming messages from the things network and saves the data to a mongodb DB. The data are accessible trough rest api.
+More information on how to deploy the server and which api are accessible can be found in the server folder.
