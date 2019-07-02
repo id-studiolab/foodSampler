@@ -1,8 +1,13 @@
 /**
  * @api {get} /homes/:id/events getEventsByHome
+ * @apiDescription get all the button events registerd from all the deivices installed in a specific home. 
  * @apiName getEventsByHomeID
  * @apiGroup Home
  *
+ * @apiParam {String} [limit] how many device events .
+ * @apiParam {String} [skip] how many results to skip, can be used in case you want to paginate the results.
+ * @apiParam {String} [from] only get events from a specific time stamp, date should be provided as ISO string e.g.2019-07-02T05:21:42.089Z
+ * @apiParam {String} [to] only get events before a specific time stamp, date should be provided as ISO string e.g.2019-07-02T05:21:42.089Z
  * @apiSuccess {Array} data about a home
  * @apiSuccessExample {json} Success-Response:
  *    {
@@ -40,22 +45,6 @@
  *                         "device_EUI": "00603718517107D4",
  *                         "btn_pressed": 7,
  *                         "battery_voltage": 4305,
- *                         "__v": 0
- *                     },
- *                     {
- *                         "_id": "5cdbe3b335cc613a1daf3183",
- *                         "event_time": "2019-05-15T10:02:27.079Z",
- *                         "device_EUI": "00603718517107D4",
- *                         "btn_pressed": null,
- *                         "battery_voltage": 0,
- *                         "__v": 0
- *                     },
- *                     {
- *                         "_id": "5cdbe3b435cc613a1daf3184",
- *                         "event_time": "2019-05-15T10:02:27.982Z",
- *                         "device_EUI": "00603718517107D4",
- *                         "btn_pressed": null,
- *                         "battery_voltage": 0,
  *                         "__v": 0
  *                     },
  *                     {
@@ -99,6 +88,21 @@
 const getEvents = ( { Home, Device, Event }, { config } ) => async ( req, res, next ) => {
 
   const { _id } = req.params;
+  let limit = req.body.limit;
+  let skip = req.body.skip;
+
+
+  let from = new Date( "2018-01-01T00:00:00.0Z" )
+  if ( req.body.from ) {
+    from = new Date( req.body.from );
+  }
+
+  let to = new Date();
+  if ( req.body.to ) {
+    from = new Date( req.body.to );
+  }
+
+  console.log( from.getHours(), to.getHours() );
 
   try {
     const home = await Home.findOne( { _id } )
@@ -106,7 +110,18 @@ const getEvents = ( { Home, Device, Event }, { config } ) => async ( req, res, n
         path: 'devices',
         populate: {
           path: 'events',
-          match: { "btn_pressed": { $ne: null } },
+          match: {
+            "$and": [
+              { "btn_pressed": { $gte: 0 } },
+              { "event_time": { $gte: from, $lt: to } },
+            ]
+          },
+          options: {
+            "limit": limit,
+            "skip": Number( skip ),
+            "sort": {}
+          },
+
         }
       } )
 
