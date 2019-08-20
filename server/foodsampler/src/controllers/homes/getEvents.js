@@ -1,6 +1,6 @@
 /**
  * @api {get} /homes/:id/events getEventsByHome
- * @apiDescription get all the button events registerd from all the deivices installed in a specific home. 
+ * @apiDescription get all the button events registerd from all the deivices installed in a specific home.
  * @apiName getEventsByHomeID
  * @apiGroup Home
  *
@@ -99,7 +99,7 @@ const getEvents = ( { Home, Device, Event }, { config } ) => async ( req, res, n
 
   let to = new Date();
   if ( req.body.to ) {
-    from = new Date( req.body.to );
+    to = new Date( req.body.to );
   }
 
   console.log( from.getHours(), to.getHours() );
