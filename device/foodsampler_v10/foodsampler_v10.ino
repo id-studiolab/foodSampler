@@ -37,7 +37,7 @@
 #include "auth.h"
 
 
-#define FOODSAMPLER_ID 3
+#define FOODSAMPLER_ID 1
 #define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
 #define DEBUG 1
 
@@ -79,10 +79,6 @@ bool wakeUpFlag = false;
 // cycle limitations).
 const unsigned TX_INTERVAL = 180;
 
-
-
-
-
 // This EUI must be in little-endian format, so least-significant-byte
 // first. When copying an EUI from ttnctl output, this means to reverse
 // the bytes. For TTN issued EUIs the last bytes should be 0xD5, 0xB3,
@@ -107,23 +103,48 @@ void os_getDevKey (u1_t* buf) {
 static uint8_t mydata[3];
 static osjob_t sendjob;
 
-void connectFlash( void ){
-  for(int i = 3; i > 0; i--) {
-      digitalWrite(LED,HIGH);
-      delay(1000);
-      digitalWrite(LED,LOW);
-      delay(1000);
+long lastFlashUpdateTime=0;
+boolean ledDebugStatus=0;
+int debugLedFleshInterval=200;
+boolean debugLedflashing=false;
+
+void debugLedUpdate(){
+  if (debugLedflashing){
+    if (millis()-lastFlashUpdateTime>debugLedFleshInterval){
+      ledDebugStatus=!ledDebugStatus;
+      lastFlashUpdateTime=millis();
+      digitalWrite(LED,ledDebugStatus);
+    }
   }
 }
 
-void sendFlash( void ){
-  for(int i = 5; i > 0; i--) {
-    digitalWrite(LED,HIGH);
-    delay(100);
-    digitalWrite(LED,LOW);
-    delay(300);
-  } 
+void connectFlash( void ){
+  debugLedFleshInterval=1000;
+  debugLedflashing=true;
+
+//  for(int i = 3; i > 0; i--) {
+//      digitalWrite(LED,HIGH);
+//      delay(1000);
+//      digitalWrite(LED,LOW);
+//      delay(1000);
+//  }
 }
+
+void sendFlash( void ){
+  debugLedFleshInterval=100;
+  debugLedflashing=true;
+//  for(int i = 5; i > 0; i--) {
+//    digitalWrite(LED,HIGH);
+//    delay(100);
+//    digitalWrite(LED,LOW);
+//    delay(300);
+//  } 
+}
+
+void stopFlashing(){
+  debugLedflashing=false;
+}
+
 
 // Pin mapping for Adafruit Feather M0 LoRa
 const lmic_pinmap lmic_pins = {
@@ -154,6 +175,7 @@ void onEvent (ev_t ev) {
 		break;
 	case EV_JOINING:
 		Serial.println(F("EV_JOINING"));
+		connectFlash();
 		break;
 	case EV_JOINED:
 		Serial.println(F("EV_JOINED"));
@@ -182,8 +204,7 @@ void onEvent (ev_t ev) {
 		// during join, but because slow data rates change max TX
 		// size, we don't use it in this example.
 		LMIC_setLinkCheckMode(0);
-
-		connectFlash();
+stopFlashing();
 		
 
 		break;
@@ -203,6 +224,7 @@ void onEvent (ev_t ev) {
 		break;
 	case EV_TXCOMPLETE:
 		Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
+   stopFlashing();
 		if (LMIC.txrxFlags & TXRX_ACK)
 			Serial.println(F("Received ack"));
 		if (LMIC.dataLen) {
@@ -327,6 +349,9 @@ void setup() {
   
 	// LMIC init
 	os_init();
+    // Let LMIC compensate for +/- 1% clock error
+  LMIC_setClockError(MAX_CLOCK_ERROR * 1 / 100);
+  
 	// Reset the MAC state. Session and pending data transfers will be discarded.
 	LMIC_reset();
 
@@ -339,7 +364,7 @@ volatile int buttons = 0;
 
 void loop() {
 	os_runloop_once();
-
+  debugLedUpdate();
 	if( buttonFlag ) {
 		//noInterrupts();
 		digitalWrite(LED, HIGH);

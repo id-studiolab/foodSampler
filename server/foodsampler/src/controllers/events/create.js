@@ -45,12 +45,15 @@ const create = ( { Event, Device }, { config } ) => async ( req, res, next ) => 
       return sendOne( res, "device is not registered on db" );
 
     } else {
-      //console.log( "found device: ", device );
+      console.log( "found device: ", device );
       device.events.push( event );
+      console.log( "pushed event to device" );
 
       await device.save();
+      console.log( "saved device" );
 
       await event.save();
+      console.log( "saved event" );
 
       return sendOne( res, { event } );
     }

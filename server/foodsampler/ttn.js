@@ -32,8 +32,10 @@ ttn.data( appID, accessKey )
 
       console.log( "received", time, deviceEUI, buttonPressed, battery_voltage );
 
+      //client.send( "airbnb", new Buffer( [ 0x0f, 0xaf ] ) )
+
       saveEventToDB( deviceEUI, buttonPressed, time, battery_voltage );
-      mqttClient.sendDataToMQTT( 'event', deviceEUI, buttonPressed, time, battery_voltage );
+      //mqttClient.sendDataToMQTT( 'event', deviceEUI, buttonPressed, time, battery_voltage );
     } )
   } )
   .catch( function( error ) {
@@ -42,7 +44,7 @@ ttn.data( appID, accessKey )
   } )
 
 const production = 'https://foodsampler.herokuapp.com/';
-const development = 'http://localhost';
+const development = 'http://127.0.0.1';
 
 var host;
 
