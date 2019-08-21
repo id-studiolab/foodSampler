@@ -76,33 +76,34 @@
  *
  * @apiExample {curl} Example usage:
  *  curl -X GET \
- *    https://foodsampler.herokuapp.com/api/v1/homes/5d1a0b066cfdc10017e442c3/events \
- *    -H 'Accept: *\/*' \
- *    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMTlmZDBiZDNkMTQ4MDAxNzFlY2ExOCIsImlhdCI6MTU2MTk4NzU1NSwiZXhwIjoxNTY0NTc5NTU1fQ.LYshWrnx6VhmR_vSYlwB882CoLk95Y0tzkjxeIfnuqY' \
- *    -H 'Cache-Control: no-cache' \
- *    -H 'Connection: keep-alive' \
- *    -H 'Content-Type: application/x-www-form-urlencoded' \
- *    -H 'Host: foodsampler.herokuapp.com' \
+ *    'http://localhost:3001/api/v1/homes/5cdbdf1da63d7936c23bb30f/events?from=2019-08-15T00:00:00.355Z&to=2019-08-16T00:00:00.355Z'
+ *    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMWI3NmIxMzYwNGI2MDAxN2JhMzA3YyIsImlhdCI6MTU2NjI5NTYzOCwiZXhwIjoxNTY4ODg3NjM4fQ.0BfzyfHic3QWl2q1GAx7D-Ndk7QqmlAT_Gz8L5r3rkI' \
  */
 
 const getEvents = ( { Home, Device, Event }, { config } ) => async ( req, res, next ) => {
 
   const { _id } = req.params;
-  let limit = req.body.limit;
-  let skip = req.body.skip;
+  let limit = req.query.limit;
+  let skip = req.query.skip;
 
+  let request_from = req.query.from;
+  let request_to = req.query.to;
+
+  console.log( req.query )
+
+  console.log( request_from, request_to );
 
   let from = new Date( "2018-01-01T00:00:00.0Z" )
-  if ( req.body.from ) {
-    from = new Date( req.body.from );
+  if ( request_from ) {
+    from = new Date( request_from );
   }
 
   let to = new Date();
-  if ( req.body.to ) {
-    to = new Date( req.body.to );
+  if ( request_to ) {
+    to = new Date( request_to );
   }
 
-  console.log( from.getHours(), to.getHours() );
+  console.log( from, to );
 
   try {
     const home = await Home.findOne( { _id } )
