@@ -10,6 +10,9 @@ const schema = new Schema( {
     type: String,
     required: [ true ]
   },
+  device_nickname: {
+    type: String,
+  },
   home_id: {
     type: ObjectId,
     ref: 'Home',
