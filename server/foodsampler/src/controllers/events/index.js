@@ -12,7 +12,7 @@ module.exports = ( models, { config } ) => {
 
   api.get( '/', authenticate, list( models, { config } ) );
   api.get( '/:_id', authenticate, get( models, { config } ) );
-  api.post( '/', authenticate, create( models, { config } ) );
+  api.post( '/', create( models, { config } ) );
   api.delete( '/:_id', authenticate, remove( models, { config } ) );
 
   return api;
