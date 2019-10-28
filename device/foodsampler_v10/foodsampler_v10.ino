@@ -37,7 +37,7 @@
 #include "auth.h"
 
 
-#define FOODSAMPLER_ID 3
+#define FOODSAMPLER_ID 7
 #define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
 #define DEBUG 1
 
