@@ -39,9 +39,9 @@
 
 #define FOODSAMPLER_ID 7
 #define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
-#define DEBUG 1
+#define DEBUG 0
 
-#define SETCLOCK 1
+#define SETCLOCK 0
 
 #define YEAR  2019
 #define MONTH    6
@@ -241,7 +241,7 @@ stopFlashing();
     //disable sleep during debug to keep serial running
 		if(!DEBUG){
 		  Serial.println("sleepy time");
-		  USBDevice.detach();
+		  //USBDevice.detach();
 		  digitalWrite(LED, LOW);
 		  LowPower.deepSleep(HEARTBEAT_INTERVAL);
 		  wakeUpTimeOut();
