@@ -7,15 +7,11 @@
 #include "auth.h"
 
 
-#define FOODSAMPLER_ID 1
+#define FOODSAMPLER_ID 2
 #define HEARTBEAT_INTERVAL 60000  //in milliseconds (10 min)
-#define CUE_TRANSMIT_INTERVAL 60000  //in milliseconds (10 min)
 #define DEBUG 0
 
-
-#define CUELENGTH 60
-uint8_t sendCue[CUELENGTH];
-uint8_t cueCounter = 0;
+//#define CUELENGTH 100
 
 #define SETCLOCK 0
 
@@ -47,6 +43,7 @@ RTCZero rtc;
 
 #define LED    13
 
+#define CUE_SIZE 50
 
 bool buttonFlag = false;
 bool wakeUpFlag = false;
@@ -76,7 +73,8 @@ void os_getDevKey (u1_t* buf) {
   memcpy_P(buf, APPKEY, 16);
 }
 
-static uint8_t mydata[3];
+static uint8_t mydata[CUE_SIZE];
+uint8_t dataCounter = 0;
 static osjob_t sendjob;
 
 long lastFlashUpdateTime = 0;
@@ -201,18 +199,18 @@ void onEvent (ev_t ev) {
 
       os_setTimedCallback(&sendjob, os_getTime() + sec2osticks(TX_INTERVAL), do_send);
 
-      //disable sleep during debug to keep serial running
+      for(int i  =  0; i<100; i++){
+        mydata[i]  =  0;
+      }
+      
       if (!DEBUG) {
         Serial.println("sleepy time");
         //USBDevice.detach();
         digitalWrite(LED, LOW);
-        if (cueCounter ==  0) {
-          LowPower.deepSleep(HEARTBEAT_INTERVAL);
-        }
-        else {
-          LowPower.deepSleep(CUE_TRANSMIT_INTERVAL);
-        }
-        wakeUpTimeOut();
+       
+        LowPower.deepSleep(HEARTBEAT_INTERVAL);
+       
+     //   wakeUpTimeOut();
       }
 
       break;
@@ -250,6 +248,12 @@ void onEvent (ev_t ev) {
   }
 }
 
+void saveBattery(){
+  uint16_t bat = readBattery();
+    mydata[0] = bat >> 8;
+    mydata[1] = bat;
+}
+
 void do_send(osjob_t* j) {
   // Check if there is not a current TX/RX job running
   if (LMIC.opmode & OP_TXRXPEND) {
@@ -263,10 +267,19 @@ void do_send(osjob_t* j) {
 }
 
 
+void addToCue(uint8_t hour, uint8_t min, uint8_t button){
+  mydata[dataCounter+2] = hour;
+  mydata[dataCounter+3] = min;
+  mydata[dataCounter+3] = button;
+  dataCounter += 3;
+  printCue();
+}
 
-
-
-
+void printCue(){
+  for(int i = 0; i < CUE_SIZE; i++){
+    Serial.println(mydata[i]);
+  }
+}
 
 void setup() {
 
@@ -274,6 +287,8 @@ void setup() {
     while (!Serial);
   }
 
+  while (!Serial);
+  
   Serial.begin(9600);
   Serial.println(F("Starting"));
 
@@ -313,6 +328,7 @@ void setup() {
 
   Serial.print("Battery: "); Serial.print(readBattery()); Serial.println(" mV");
 
+  
   rtc.begin();
   if ( SETCLOCK ) {
     rtc.setDate( DAY, MONTH, YEAR );
@@ -331,7 +347,7 @@ void setup() {
 
   // Start job (sending automatically starts OTAA too)
   do_send(&sendjob);
-  sendFlash();
+  //sendFlash();
 }
 
 volatile int buttons = 0;
@@ -339,13 +355,14 @@ volatile int buttons = 0;
 void loop() {
   os_runloop_once();
   debugLedUpdate();
+  
   if ( buttonFlag ) {
     //noInterrupts();
     digitalWrite(LED, HIGH);
     buttonFlag = false;
 
     //delay(20); //just to do some debouncing
-
+    buttons = 0x00;
     buttons |= (!digitalRead(BUT1));
     buttons |= (!digitalRead(BUT2)) << 1;
     buttons |= (!digitalRead(BUT3)) << 2;
@@ -356,35 +373,31 @@ void loop() {
     delay(50);
     //interrupts();
     //Serial.println(buttons);
-
-    uint16_t bat = readBattery();
-    mydata[0] = bat >> 8;
-    mydata[1] = bat;
-    mydata[2] = buttons;
-    buttons = 0x00;
+    //
     Serial.print(rtc.getYear() + 1984); Serial.print("/"); Serial.print(rtc.getMonth()); Serial.print("/"); Serial.print(rtc.getDay()); Serial.print(" ");
     Serial.print(rtc.getHours()); Serial.print(":"); Serial.print(rtc.getMinutes()); Serial.print(":"); Serial.println(rtc.getSeconds());
-    Serial.println(mydata[0] * 256 + mydata[1]);
-    Serial.println(mydata[2]);
-    Serial.println();
-
-
-    addToCue(mydata[0], mydata[1], mydata[2]);
-
+    
+    //addToCue(rtc.getHours(), rtc.getMinutes(), buttons);
 
     //do_send(&sendjob);
 
     //sendFlash();
+    delay(50);
+    digitalWrite(LED, LOW);
+    
   }
 
   if ( wakeUpFlag && !buttonFlag ) {
+    
+    saveBattery();
+    dataCounter =  0;
+    
     wakeUpFlag = false;
-    mydata[2] = 0;
-    //do_send(&sendjob);
+    do_send(&sendjob);
     //addToCue(mydata[0], mydata[1], mydata[2]);
     //sendFlash();
 
-    processCue();
+    //processCue();
 
   }
 }
@@ -393,8 +406,6 @@ void wakeUpTimeOut() {
   if ( !buttonFlag  ) {
     wakeUpFlag =  true;
   }
-  //USBDevice.attach();
-  //Serial.println("Wake up done");
 }
 
 void wakeUpButton() {

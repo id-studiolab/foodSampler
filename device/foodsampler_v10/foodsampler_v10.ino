@@ -37,7 +37,7 @@
 #include "auth.h"
 
 
-#define FOODSAMPLER_ID 7
+#define FOODSAMPLER_ID 2
 #define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
 #define DEBUG 0
 
@@ -365,6 +365,7 @@ volatile int buttons = 0;
 void loop() {
 	os_runloop_once();
   debugLedUpdate();
+	
 	if( buttonFlag ) {
 		//noInterrupts();
 		digitalWrite(LED, HIGH);
