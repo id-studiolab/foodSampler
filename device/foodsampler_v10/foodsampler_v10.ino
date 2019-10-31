@@ -37,7 +37,7 @@
 #include "auth.h"
 
 
-#define FOODSAMPLER_ID 6
+#define FOODSAMPLER_ID 2
 #define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
 #define DEBUG 1
 
@@ -46,7 +46,7 @@
 #define YEAR  2019
 #define MONTH    6
 #define DAY     21
-#define HOUR    16 
+#define HOUR    16
 #define MIN     41
 #define SEC      0
 
@@ -109,18 +109,18 @@ int debugLedFleshInterval=200;
 boolean debugLedflashing=false;
 
 void debugLedUpdate(){
-  if (debugLedflashing){
-    if (millis()-lastFlashUpdateTime>debugLedFleshInterval){
-      ledDebugStatus=!ledDebugStatus;
-      lastFlashUpdateTime=millis();
-      digitalWrite(LED,ledDebugStatus);
-    }
-  }
+	if (debugLedflashing) {
+		if (millis()-lastFlashUpdateTime>debugLedFleshInterval) {
+			ledDebugStatus=!ledDebugStatus;
+			lastFlashUpdateTime=millis();
+			digitalWrite(LED,ledDebugStatus);
+		}
+	}
 }
 
 void connectFlash( void ){
-  debugLedFleshInterval=1000;
-  debugLedflashing=true;
+	debugLedFleshInterval=1000;
+	debugLedflashing=true;
 
 //  for(int i = 3; i > 0; i--) {
 //      digitalWrite(LED,HIGH);
@@ -131,18 +131,18 @@ void connectFlash( void ){
 }
 
 void sendFlash( void ){
-  debugLedFleshInterval=100;
-  debugLedflashing=true;
+	debugLedFleshInterval=100;
+	debugLedflashing=true;
 //  for(int i = 5; i > 0; i--) {
 //    digitalWrite(LED,HIGH);
 //    delay(100);
 //    digitalWrite(LED,LOW);
 //    delay(300);
-//  } 
+//  }
 }
 
 void stopFlashing(){
-  debugLedflashing=false;
+	debugLedflashing=false;
 }
 
 
@@ -204,8 +204,8 @@ void onEvent (ev_t ev) {
 		// during join, but because slow data rates change max TX
 		// size, we don't use it in this example.
 		LMIC_setLinkCheckMode(0);
-stopFlashing();
-		
+		stopFlashing();
+
 
 		break;
 	/*
@@ -224,7 +224,7 @@ stopFlashing();
 		break;
 	case EV_TXCOMPLETE:
 		Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
-   stopFlashing();
+		stopFlashing();
 		if (LMIC.txrxFlags & TXRX_ACK)
 			Serial.println(F("Received ack"));
 		if (LMIC.dataLen) {
@@ -238,15 +238,15 @@ stopFlashing();
 
 		os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
 
-    //disable sleep during debug to keep serial running
-		if(!DEBUG){
-		  Serial.println("sleepy time");
-		  USBDevice.detach();
-		  digitalWrite(LED, LOW);
-		  LowPower.deepSleep(HEARTBEAT_INTERVAL);
-		  wakeUpTimeOut();
-    }
-      
+		//disable sleep during debug to keep serial running
+		if(!DEBUG) {
+			Serial.println("sleepy time");
+			USBDevice.detach();
+			digitalWrite(LED, LOW);
+			LowPower.deepSleep(HEARTBEAT_INTERVAL);
+			wakeUpTimeOut();
+		}
+
 		break;
 	case EV_LOST_TSYNC:
 		Serial.println(F("EV_LOST_TSYNC"));
@@ -296,10 +296,10 @@ void do_send(osjob_t* j){
 
 void setup() {
 
-  if(DEBUG){
-    while (!Serial);
-  }
-  
+	if(DEBUG) {
+		while (!Serial);
+	}
+
 	Serial.begin(9600);
 	Serial.println(F("Starting"));
 
@@ -339,32 +339,33 @@ void setup() {
 
 	Serial.print("Battery: "); Serial.print(readBattery()); Serial.println(" mV");
 
-  rtc.begin();
-  if( SETCLOCK ){
-    rtc.setDate( DAY, MONTH, YEAR );
-    rtc.setTime( HOUR, MIN, SEC );
-  }
-  
+	rtc.begin();
+	if( SETCLOCK ) {
+		rtc.setDate( DAY, MONTH, YEAR );
+		rtc.setTime( HOUR, MIN, SEC );
+	}
 
-  
+
+
 	// LMIC init
 	os_init();
-    // Let LMIC compensate for +/- 1% clock error
-  LMIC_setClockError(MAX_CLOCK_ERROR * 1 / 100);
-  
+	// Let LMIC compensate for +/- 1% clock error
+	LMIC_setClockError(MAX_CLOCK_ERROR * 1 / 100);
+
 	// Reset the MAC state. Session and pending data transfers will be discarded.
 	LMIC_reset();
 
 	// Start job (sending automatically starts OTAA too)
 	do_send(&sendjob);
-  //sendFlash();
+	//sendFlash();
 }
 
 volatile int buttons = 0;
 
 void loop() {
 	os_runloop_once();
-  debugLedUpdate();
+	debugLedUpdate();
+
 	if( buttonFlag ) {
 		//noInterrupts();
 		digitalWrite(LED, HIGH);
@@ -388,13 +389,13 @@ void loop() {
 		mydata[1] = bat;
 		mydata[2] = buttons;
 		buttons = 0x00;
-    Serial.print(rtc.getYear()+1984);Serial.print("/");Serial.print(rtc.getMonth());Serial.print("/");Serial.print(rtc.getDay());Serial.print(" ");
-    Serial.print(rtc.getHours());Serial.print(":");Serial.print(rtc.getMinutes());Serial.print(":");Serial.println(rtc.getSeconds());
+		Serial.print(rtc.getYear()+1984); Serial.print("/"); Serial.print(rtc.getMonth()); Serial.print("/"); Serial.print(rtc.getDay()); Serial.print(" ");
+		Serial.print(rtc.getHours()); Serial.print(":"); Serial.print(rtc.getMinutes()); Serial.print(":"); Serial.println(rtc.getSeconds());
 		Serial.println(mydata[0]*256+mydata[1]);
 		Serial.println(mydata[2]);
 		Serial.println();
 		do_send(&sendjob);
-    sendFlash();
+		sendFlash();
 	}
 
 	if( wakeUpFlag && !buttonFlag ) {
@@ -402,8 +403,8 @@ void loop() {
 		mydata[2] = 0;
 		do_send(&sendjob);
 
-    sendFlash();
-		
+		sendFlash();
+
 	}
 }
 
