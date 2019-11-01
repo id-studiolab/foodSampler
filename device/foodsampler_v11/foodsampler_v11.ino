@@ -238,7 +238,6 @@ void loop() {
   debugLedUpdate();
 
   if ( buttonFlag ) {
-    delay(500);
     Serial.println(F("button wake up!"));
     digitalWrite(LED, HIGH);
     readButtons();
@@ -255,7 +254,6 @@ void loop() {
   }
 
   if ( wakeUpFlag && !buttonFlag ) {
-    delay(500);
     Serial.println(F("timer wake up!"));
     if (cueCounter > 0){
       processCue(); 
