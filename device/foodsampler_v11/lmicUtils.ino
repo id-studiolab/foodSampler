@@ -20,6 +20,11 @@ void printSessionInfo() {
   Serial.println("");
 }
 
+void printTXRXFlags(){
+  Serial.print("TXRXFLAGS: ");
+  Serial.println(LMIC.txrxFlags);
+}
+
 void initLmic(){
   // LMIC init
   os_init();

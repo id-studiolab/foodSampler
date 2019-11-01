@@ -5,9 +5,9 @@
 #include "auth.h"
 
 
-#define FOODSAMPLER_ID 1
-#define HEARTBEAT_INTERVAL 60000  //in milliseconds (10 min)
-#define CUE_TRANSMIT_INTERVAL 60000  //in milliseconds (10 min)
+#define FOODSAMPLER_ID 5
+#define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
+#define CUE_TRANSMIT_INTERVAL 60000  //in milliseconds (1 min)
 
 #define CUELENGTH 60
 uint8_t sendCue[CUELENGTH];
@@ -140,6 +140,8 @@ void onEvent (ev_t ev) {
       break;
     case EV_TXCOMPLETE:
       Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
+      printTXRXFlags();
+      printCue();
       stopFlashing();
       if (LMIC.txrxFlags & TXRX_ACK)
         Serial.println(F("Received ack"));
@@ -236,28 +238,40 @@ void loop() {
   debugLedUpdate();
 
   if ( buttonFlag ) {
-
+    delay(500);
+    Serial.println(F("button wake up!"));
     digitalWrite(LED, HIGH);
     readButtons();
-
-    delay(50);
-
     uint16_t bat = readBattery();
     uint8_t batH = bat >> 8;
     uint8_t batL = bat;
     uint8_t btn = readButtons();
-    printPacketData(batH, batL, btn);
     addToCue(batH, batL, btn);
-
-    printCue();
+    printCue();    
+    buttonFlag = false;
     if (networkJoined==true){
       activateSleepMode();      
     }
-    buttonFlag = false;
   }
 
   if ( wakeUpFlag && !buttonFlag ) {
-    processCue();
+    delay(500);
+    Serial.println(F("timer wake up!"));
+    if (cueCounter > 0){
+      processCue(); 
+    }else{
+      uint16_t bat = readBattery();
+      uint8_t batH = bat >> 8;
+      uint8_t batL = bat;
+      uint8_t btn = readButtons();
+  
+      mydata[0] = batH;
+      mydata[1] = batL;
+      mydata[2] = 0;
+      
+      do_send(&sendjob);
+      sendFlash();
+    }
     wakeUpFlag = false;
   }
 }

@@ -22,14 +22,12 @@ void shiftCue() {
 
 void processCue() {
   Serial.println("processing cue...");
-  if ( cueCounter > 0 ) {
     mydata[0] = sendCue[0];
     mydata[1] = sendCue[1];
     mydata[2] = sendCue[2];
     packedQueued=true;
     do_send(&sendjob);
     sendFlash();
-  }
 }
 
 void printCue() {
