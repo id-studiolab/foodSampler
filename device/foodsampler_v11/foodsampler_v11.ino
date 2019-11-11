@@ -5,7 +5,7 @@
 #include "auth.h"
 
 
-#define FOODSAMPLER_ID 5
+#define FOODSAMPLER_ID 7
 #define HEARTBEAT_INTERVAL 600000  //in milliseconds (10 min)
 #define CUE_TRANSMIT_INTERVAL 60000  //in milliseconds (1 min)
 
@@ -46,6 +46,8 @@ RTCZero rtc;
 
 bool buttonFlag = false;
 bool wakeUpFlag = false;
+
+bool sending=false;
 
 // Schedule TX every this many seconds (might become longer due to duty
 // cycle limitations).
@@ -118,7 +120,7 @@ void onEvent (ev_t ev) {
       LMIC_setLinkCheckMode(0);
       stopFlashing();
       networkJoined=true;
-      activateSleepMode();
+      activateSleepMode(HEARTBEAT_INTERVAL);
       break;
     /*
       || This event is defined but not used in the code. No
@@ -132,7 +134,7 @@ void onEvent (ev_t ev) {
       Serial.println(F("EV_JOIN_FAILED"));
       stopFlashing();
       networkJoined=false;
-      activateSleepMode();
+      activateSleepMode(HEARTBEAT_INTERVAL);
       break;
     case EV_REJOIN_FAILED:
       Serial.println(F("EV_REJOIN_FAILED"));
@@ -142,7 +144,14 @@ void onEvent (ev_t ev) {
       Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
       printTXRXFlags();
       printCue();
+      printSeqnoUp ();
+      printSeqnoDn ();  
       stopFlashing();
+      sending=false;
+
+
+      Serial.println("----------------------------");
+      
       if (LMIC.txrxFlags & TXRX_ACK)
         Serial.println(F("Received ack"));
       if (LMIC.dataLen) {
@@ -158,7 +167,11 @@ void onEvent (ev_t ev) {
 
       //USBDevice.detach();
       digitalWrite(LED, LOW);
-      activateSleepMode();
+      if (cueCounter > 0){
+        activateSleepMode(CUE_TRANSMIT_INTERVAL);
+      }else{
+        activateSleepMode(HEARTBEAT_INTERVAL);
+      }                  
       break;
 
     case EV_LOST_TSYNC:
@@ -201,9 +214,12 @@ void do_send(osjob_t* j) {
     Serial.println(F("OP_TXRXPEND, not sending"));
     stopFlashing();
   } else {
+    sending=true;
     // Prepare upstream data transmission at the next possible time.
-    LMIC_setTxData2(1, mydata, sizeof(mydata), 0);
+    LMIC_setTxData2(1, mydata, sizeof(mydata), 1);
     Serial.println(F("Packet queued"));
+    printSeqnoUp ();
+    printSeqnoDn ();    
     if (packedQueued && cueCounter > 0) {
       shiftCue();
       packedQueued = false;
@@ -248,8 +264,12 @@ void loop() {
     addToCue(batH, batL, btn);
     printCue();    
     buttonFlag = false;
-    if (networkJoined==true){
-      activateSleepMode();      
+    delay(100);
+
+    if (!sending && cueCounter==0){
+      activateSleepMode(100);      
+    }else{
+       activateSleepMode(CUE_TRANSMIT_INTERVAL);      
     }
   }
 

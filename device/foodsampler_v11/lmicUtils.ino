@@ -38,3 +38,13 @@ void initLmic(){
   // Start job (sending automatically starts OTAA too)
   do_send(&sendjob);
 }
+
+void printSeqnoUp (){
+  Serial.print("counter UP: ");
+  Serial.println(LMIC.seqnoUp);
+}
+
+void printSeqnoDn (){
+  Serial.print("counter DOWN: ");
+  Serial.println(LMIC.seqnoDn);
+}
