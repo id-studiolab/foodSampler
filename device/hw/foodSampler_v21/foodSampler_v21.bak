@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 30 0
+LIBS:foodSampler_v20-cache
+EELAYER 26 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -14,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L foodSampler_v20-rescue:ESP32-WROOM-_ESP32-footprints-Shem-Lib U40
+L _ESP32-footprints-Shem-Lib:ESP32-WROOM U40
 U 1 1 603FA8EF
 P 11700 6050
 F 0 "U40" H 11675 7439 60  0000 C CNN
@@ -25,7 +26,7 @@ F 3 "" H 11250 6500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:USB_C_Receptacle-Connector J00
+L Connector:USB_C_Receptacle J00
 U 1 1 603FAA32
 P 1350 2500
 F 0 "J00" H 1455 3767 50  0000 C CNN
@@ -36,7 +37,7 @@ F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 1500 25
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:IP2721-_voltage_regulator U00
+L _voltage_regulator:IP2721 U00
 U 1 1 6040CEB0
 P 5150 1800
 F 0 "U00" H 5450 2150 50  0000 L CNN
@@ -47,7 +48,7 @@ F 3 "" H 5050 1800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R00
+L Device:R_Small R00
 U 1 1 6040F2B9
 P 3150 2000
 F 0 "R00" H 3209 2046 50  0000 L CNN
@@ -58,7 +59,7 @@ F 3 "~" H 3150 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R01
+L Device:R_Small R01
 U 1 1 6040F3AF
 P 3450 2000
 F 0 "R01" H 3509 2046 50  0000 L CNN
@@ -69,7 +70,7 @@ F 3 "~" H 3450 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0101
+L power:GND #PWR0101
 U 1 1 6040F4A1
 P 3150 2250
 F 0 "#PWR0101" H 3150 2000 50  0001 C CNN
@@ -80,7 +81,7 @@ F 3 "" H 3150 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0102
+L power:GND #PWR0102
 U 1 1 6040F4DB
 P 3450 2250
 F 0 "#PWR0102" H 3450 2000 50  0001 C CNN
@@ -99,7 +100,7 @@ Wire Wire Line
 Wire Wire Line
 	3450 2100 3450 2250
 $Comp
-L foodSampler_v20-rescue:Q_NMOS_GSD-Device Q00
+L Device:Q_NMOS_GSD Q00
 U 1 1 6059B82A
 P 5200 1200
 F 0 "Q00" V 5543 1200 50  0000 C CNN
@@ -120,7 +121,7 @@ Wire Wire Line
 	3600 1500 3600 1100
 Connection ~ 5000 1100
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C00
+L Device:C_Small C00
 U 1 1 6059C0B6
 P 4450 1300
 F 0 "C00" H 4542 1346 50  0000 L CNN
@@ -131,7 +132,7 @@ F 3 "~" H 4450 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C01
+L Device:C_Small C01
 U 1 1 6059C230
 P 5850 1300
 F 0 "C01" H 5942 1346 50  0000 L CNN
@@ -142,7 +143,7 @@ F 3 "~" H 5850 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0103
+L power:GND #PWR0103
 U 1 1 6059C5FC
 P 5200 2250
 F 0 "#PWR0103" H 5200 2000 50  0001 C CNN
@@ -153,7 +154,7 @@ F 3 "" H 5200 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0104
+L power:GND #PWR0104
 U 1 1 6059C77E
 P 4450 1400
 F 0 "#PWR0104" H 4450 1150 50  0001 C CNN
@@ -164,7 +165,7 @@ F 3 "" H 4450 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0105
+L power:GND #PWR0105
 U 1 1 6059C829
 P 5850 1400
 F 0 "#PWR0105" H 5850 1150 50  0001 C CNN
@@ -182,7 +183,7 @@ Wire Wire Line
 Wire Wire Line
 	5850 1200 5850 1100
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0106
+L power:GND #PWR0106
 U 1 1 6059CF40
 P 6200 2000
 F 0 "#PWR0106" H 6200 1750 50  0001 C CNN
@@ -193,7 +194,7 @@ F 3 "" H 6200 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:D_TVS_x2_AAC-Device D00
+L Device:D_TVS_x2_AAC D00
 U 1 1 6059D8DF
 P 4150 2100
 F 0 "D00" H 4150 2316 50  0000 C CNN
@@ -212,7 +213,7 @@ Connection ~ 3450 1800
 Wire Wire Line
 	3600 1100 4000 1100
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0107
+L power:GND #PWR0107
 U 1 1 6059E6A2
 P 4150 2250
 F 0 "#PWR0107" H 4150 2000 50  0001 C CNN
@@ -233,7 +234,7 @@ Connection ~ 4500 1800
 Wire Wire Line
 	4500 1800 4600 1800
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0108
+L power:GND #PWR0108
 U 1 1 6059F556
 P 1050 4100
 F 0 "#PWR0108" H 1050 3850 50  0001 C CNN
@@ -244,7 +245,7 @@ F 3 "" H 1050 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0109
+L power:GND #PWR0109
 U 1 1 6059F69C
 P 1350 4100
 F 0 "#PWR0109" H 1350 3850 50  0001 C CNN
@@ -265,7 +266,7 @@ Wire Wire Line
 Wire Wire Line
 	5200 2200 5200 2250
 $Comp
-L foodSampler_v20-rescue:FT231XS-Interface_USB U10
+L Interface_USB:FT231XS U10
 U 1 1 605A571D
 P 4500 5200
 F 0 "U10" H 5000 6000 50  0000 C CNN
@@ -276,7 +277,7 @@ F 3 "http://www.ftdichip.com/Products/ICs/FT231X.html" H 4500 5200 50  0001 C CN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R22
+L Device:R_Small R22
 U 1 1 605A6279
 P 13950 1150
 F 0 "R22" H 14009 1196 50  0000 L CNN
@@ -287,7 +288,7 @@ F 3 "~" H 13950 1150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R23
+L Device:R_Small R23
 U 1 1 605A659E
 P 13950 1450
 F 0 "R23" H 14009 1496 50  0000 L CNN
@@ -298,7 +299,7 @@ F 3 "~" H 13950 1450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R20
+L Device:R_Small R20
 U 1 1 605A67D7
 P 12600 1150
 F 0 "R20" H 12850 1100 50  0000 R CNN
@@ -309,7 +310,7 @@ F 3 "~" H 12600 1150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0110
+L power:GND #PWR0110
 U 1 1 605A75F9
 P 13950 1650
 F 0 "#PWR0110" H 13950 1400 50  0001 C CNN
@@ -320,7 +321,7 @@ F 3 "" H 13950 1650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R21
+L Device:R_Small R21
 U 1 1 605A7B65
 P 12600 1550
 F 0 "R21" H 12850 1500 50  0000 R CNN
@@ -348,7 +349,7 @@ Connection ~ 13950 1250
 Wire Wire Line
 	13950 1550 13950 1650
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0111
+L power:GND #PWR0111
 U 1 1 605AA096
 P 13350 1900
 F 0 "#PWR0111" H 13350 1650 50  0001 C CNN
@@ -361,7 +362,7 @@ $EndComp
 Wire Wire Line
 	13350 1900 13350 1850
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C20
+L Device:C_Small C20
 U 1 1 605AB452
 P 14350 1350
 F 0 "C20" H 14442 1396 50  0000 L CNN
@@ -372,7 +373,7 @@ F 3 "~" H 14350 1350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C21
+L Device:C_Small C21
 U 1 1 605AB6E8
 P 14750 1350
 F 0 "C21" H 14842 1396 50  0000 L CNN
@@ -383,7 +384,7 @@ F 3 "~" H 14750 1350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C22
+L Device:C_Small C22
 U 1 1 605AB794
 P 15150 1350
 F 0 "C22" H 15242 1396 50  0000 L CNN
@@ -394,7 +395,7 @@ F 3 "~" H 15150 1350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C23
+L Device:C_Small C23
 U 1 1 605ABAEC
 P 15550 1350
 F 0 "C23" H 15642 1396 50  0000 L CNN
@@ -425,7 +426,7 @@ Connection ~ 14350 1050
 Wire Wire Line
 	14350 1050 14750 1050
 $Comp
-L foodSampler_v20-rescue:+3V3-power #PWR0112
+L power:+3V3 #PWR0112
 U 1 1 605AD942
 P 15550 1000
 F 0 "#PWR0112" H 15550 850 50  0001 C CNN
@@ -455,7 +456,7 @@ Connection ~ 14750 1600
 Wire Wire Line
 	14750 1600 14950 1600
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0113
+L power:GND #PWR0113
 U 1 1 605AFF6A
 P 14950 1650
 F 0 "#PWR0113" H 14950 1400 50  0001 C CNN
@@ -471,7 +472,7 @@ Connection ~ 14950 1600
 Wire Wire Line
 	14950 1600 15150 1600
 $Comp
-L foodSampler_v20-rescue:VBUS-power #PWR0114
+L power:VBUS #PWR0114
 U 1 1 605B83E6
 P 3600 1100
 F 0 "#PWR0114" H 3600 950 50  0001 C CNN
@@ -483,7 +484,7 @@ F 3 "" H 3600 1100 50  0001 C CNN
 $EndComp
 Connection ~ 3600 1100
 $Comp
-L foodSampler_v20-rescue:VBUS-power #PWR0115
+L power:VBUS #PWR0115
 U 1 1 605B883C
 P 6200 1600
 F 0 "#PWR0115" H 6200 1450 50  0001 C CNN
@@ -508,7 +509,7 @@ Wire Wire Line
 	1950 2300 2350 2300
 Connection ~ 2350 2300
 $Comp
-L foodSampler_v20-rescue:D_Schottky_x2_ACom_KKA-Device D10
+L Device:D_Schottky_x2_ACom_KKA D10
 U 1 1 605C0D8C
 P 2900 5300
 F 0 "D10" H 2900 5516 50  0000 C CNN
@@ -529,7 +530,7 @@ Connection ~ 3200 5000
 Wire Wire Line
 	3200 5000 3800 5000
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0116
+L power:GND #PWR0116
 U 1 1 605C4BAD
 P 2900 5500
 F 0 "#PWR0116" H 2900 5250 50  0001 C CNN
@@ -542,7 +543,7 @@ $EndComp
 Text Notes 2650 5950 0    50   ~ 0
 F#:1456392
 $Comp
-L foodSampler_v20-rescue:+3V3-power #PWR0117
+L power:+3V3 #PWR0117
 U 1 1 605C700C
 P 3750 4250
 F 0 "#PWR0117" H 3750 4100 50  0001 C CNN
@@ -570,7 +571,7 @@ Wire Wire Line
 	4400 4300 4600 4300
 Connection ~ 4400 4300
 $Comp
-L foodSampler_v20-rescue:MP2615-_battery_management U30
+L _battery_management:MP2615 U30
 U 1 1 605D31F1
 P 8450 1700
 F 0 "U30" H 8450 2565 50  0000 C CNN
@@ -581,7 +582,7 @@ F 3 "https://www.monolithicpower.com/en/documentview/productdocument/index/versi
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R30
+L Device:R_Small R30
 U 1 1 605D49A7
 P 7400 1300
 F 0 "R30" V 7500 1450 50  0000 R CNN
@@ -592,7 +593,7 @@ F 3 "~" H 7400 1300 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:LED_Small-Device D30
+L Device:LED_Small D30
 U 1 1 605D5E9B
 P 7750 1300
 F 0 "D30" H 7800 1200 50  0000 C CNN
@@ -603,7 +604,7 @@ F 3 "~" V 7750 1300 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R31
+L Device:R_Small R31
 U 1 1 605D9995
 P 7400 1500
 F 0 "R31" V 7500 1650 50  0000 R CNN
@@ -614,7 +615,7 @@ F 3 "~" H 7400 1500 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:LED_Small-Device D31
+L Device:LED_Small D31
 U 1 1 605D9AB8
 P 7750 1500
 F 0 "D31" H 7800 1400 50  0000 C CNN
@@ -645,7 +646,7 @@ Wire Wire Line
 	7150 1500 7300 1500
 Connection ~ 7150 1300
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R32
+L Device:R_Small R32
 U 1 1 605E7B5A
 P 7750 1700
 F 0 "R32" V 7850 1850 50  0000 R CNN
@@ -656,7 +657,7 @@ F 3 "~" H 7750 1700 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:Thermistor_NTC-Device TH30
+L Device:Thermistor_NTC TH30
 U 1 1 605E8780
 P 7250 1900
 F 0 "TH30" H 7200 2100 50  0000 R CNN
@@ -667,7 +668,7 @@ F 3 "~" H 7250 1950 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C30
+L Device:C_Small C30
 U 1 1 605F541D
 P 6750 1300
 F 0 "C30" H 6842 1346 50  0000 L CNN
@@ -678,7 +679,7 @@ F 3 "~" H 6750 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C31
+L Device:C_Small C31
 U 1 1 605F5927
 P 7050 1900
 F 0 "C31" H 6850 2000 50  0000 L CNN
@@ -699,7 +700,7 @@ Wire Wire Line
 Wire Wire Line
 	7850 1700 7900 1700
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0118
+L power:GND #PWR0118
 U 1 1 605FD944
 P 8450 2550
 F 0 "#PWR0118" H 8450 2300 50  0001 C CNN
@@ -710,7 +711,7 @@ F 3 "" H 8450 2550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GNDA-power #PWR0119
+L power:GNDA #PWR0119
 U 1 1 605FEF01
 P 7250 2550
 F 0 "#PWR0119" H 7250 2300 50  0001 C CNN
@@ -740,7 +741,7 @@ Connection ~ 7600 1700
 Wire Wire Line
 	7600 1700 7650 1700
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0120
+L power:GND #PWR0120
 U 1 1 606146E4
 P 6750 2550
 F 0 "#PWR0120" H 6750 2300 50  0001 C CNN
@@ -761,7 +762,7 @@ Connection ~ 6750 1100
 Wire Wire Line
 	6750 1100 7150 1100
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0121
+L power:GND #PWR0121
 U 1 1 6061D788
 P 7550 2550
 F 0 "#PWR0121" H 7550 2300 50  0001 C CNN
@@ -783,7 +784,7 @@ Text Notes 6750 700  0    50   ~ 0
 Text Notes 6750 800  0    50   ~ 0
 ~CHGOK~ goes low if charging\n
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C32
+L Device:C_Small C32
 U 1 1 606380EF
 P 9350 2050
 F 0 "C32" H 9400 2150 50  0000 L CNN
@@ -798,7 +799,7 @@ Wire Wire Line
 Wire Wire Line
 	9350 1900 9350 1950
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0122
+L power:GND #PWR0122
 U 1 1 6063BB18
 P 9350 2550
 F 0 "#PWR0122" H 9350 2300 50  0001 C CNN
@@ -813,7 +814,7 @@ Wire Wire Line
 Wire Wire Line
 	8900 2300 8900 2900
 $Comp
-L foodSampler_v20-rescue:SolderJumper_2_Open-Jumper JP30
+L Jumper:SolderJumper_2_Open JP30
 U 1 1 60645658
 P 8150 2900
 F 0 "JP30" H 8150 3105 50  0000 C CNN
@@ -835,7 +836,7 @@ Wire Wire Line
 Text Notes 7900 3150 0    50   ~ 0
 CLOSE: 1 CELL\nOPEN: 2 CELLS
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C33
+L Device:C_Small C33
 U 1 1 60661994
 P 9050 1200
 F 0 "C33" H 8950 1500 50  0000 L CNN
@@ -846,7 +847,7 @@ F 3 "~" H 9050 1200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:L_Small-Device L30
+L Device:L_Small L30
 U 1 1 60662068
 P 9400 1100
 F 0 "L30" V 9585 1100 50  0000 C CNN
@@ -857,7 +858,7 @@ F 3 "~" H 9400 1100 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R33
+L Device:R_Small R33
 U 1 1 60662589
 P 9800 1100
 F 0 "R33" V 10000 1200 50  0000 R CNN
@@ -868,7 +869,7 @@ F 3 "~" H 9800 1100 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C34
+L Device:C_Small C34
 U 1 1 60662ACB
 P 10200 1300
 F 0 "C34" H 10292 1346 50  0000 L CNN
@@ -908,7 +909,7 @@ Wire Wire Line
 Wire Wire Line
 	10200 1400 10200 2550
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0123
+L power:GND #PWR0123
 U 1 1 606A2120
 P 10200 2550
 F 0 "#PWR0123" H 10200 2300 50  0001 C CNN
@@ -919,7 +920,7 @@ F 3 "" H 10200 2550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:Conn_01x02-Connector_Generic J30
+L Connector_Generic:Conn_01x02 J30
 U 1 1 606A7283
 P 11300 1550
 F 0 "J30" H 11380 1542 50  0000 L CNN
@@ -930,7 +931,7 @@ F 3 "~" H 11300 1550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:Conn_01x02-Connector_Generic J31
+L Connector_Generic:Conn_01x02 J31
 U 1 1 606A7545
 P 11300 1950
 F 0 "J31" H 11380 1942 50  0000 L CNN
@@ -941,7 +942,7 @@ F 3 "~" H 11300 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SolderJumper_2_Open-Jumper JP31
+L Jumper:SolderJumper_2_Open JP31
 U 1 1 606A9039
 P 10850 1800
 F 0 "JP31" H 10750 1600 50  0000 L CNN
@@ -954,7 +955,7 @@ $EndComp
 Text Notes 10400 2200 0    50   ~ 0
 CLOSE: 1 CELL\nOPEN: 2 CELLS
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0124
+L power:GND #PWR0124
 U 1 1 606BF3C1
 P 10600 1800
 F 0 "#PWR0124" H 10600 1550 50  0001 C CNN
@@ -980,7 +981,7 @@ Connection ~ 11100 1800
 Wire Wire Line
 	11100 1800 11100 1950
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0125
+L power:GND #PWR0125
 U 1 1 606D0A01
 P 11100 2550
 F 0 "#PWR0125" H 11100 2300 50  0001 C CNN
@@ -995,7 +996,7 @@ Wire Wire Line
 Wire Wire Line
 	10600 1800 10700 1800
 $Comp
-L foodSampler_v20-rescue:SolderJumper_3_Open-Jumper JP00
+L Jumper:SolderJumper_3_Open JP00
 U 1 1 606DBAE1
 P 6200 1800
 F 0 "JP00" V 6246 1867 50  0000 L CNN
@@ -1008,7 +1009,7 @@ $EndComp
 Text Notes 6100 2500 0    50   ~ 0
 Hi: 12V\nFl: 9V\nLo: 5V\n
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0126
+L power:GND #PWR0126
 U 1 1 606E2886
 P 4500 6150
 F 0 "#PWR0126" H 4500 5900 50  0001 C CNN
@@ -1052,7 +1053,7 @@ Wire Wire Line
 Wire Wire Line
 	12600 5600 12700 5600
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0127
+L power:GND #PWR0127
 U 1 1 6071F7AF
 P 11250 7150
 F 0 "#PWR0127" H 11250 6900 50  0001 C CNN
@@ -1063,7 +1064,7 @@ F 3 "" H 11250 7150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0128
+L power:GND #PWR0128
 U 1 1 6071FD0F
 P 12150 7150
 F 0 "#PWR0128" H 12150 6900 50  0001 C CNN
@@ -1078,7 +1079,7 @@ Wire Wire Line
 Wire Wire Line
 	11250 7100 11250 7150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0129
+L power:GND #PWR0129
 U 1 1 6072A913
 P 10700 6800
 F 0 "#PWR0129" H 10700 6550 50  0001 C CNN
@@ -1093,7 +1094,7 @@ Wire Wire Line
 Wire Wire Line
 	10700 6750 10750 6750
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0130
+L power:GND #PWR0130
 U 1 1 60730699
 P 12650 6750
 F 0 "#PWR0130" H 12650 6500 50  0001 C CNN
@@ -1113,7 +1114,7 @@ Wire Wire Line
 	12650 6600 12650 6700
 Connection ~ 12650 6700
 $Comp
-L foodSampler_v20-rescue:+3V3-power #PWR0131
+L power:+3V3 #PWR0131
 U 1 1 6073D146
 P 10700 5400
 F 0 "#PWR0131" H 10700 5250 50  0001 C CNN
@@ -1136,7 +1137,7 @@ IO0
 Wire Wire Line
 	12700 6500 12600 6500
 $Comp
-L foodSampler_v20-rescue:MMBT3904-Transistor_BJT Q10
+L Transistor_BJT:MMBT3904 Q10
 U 1 1 607522CF
 P 6650 4650
 F 0 "Q10" H 6650 5100 50  0000 L CNN
@@ -1147,7 +1148,7 @@ F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 6650 4650 50  000
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:MMBT3904-Transistor_BJT Q11
+L Transistor_BJT:MMBT3904 Q11
 U 1 1 60753207
 P 6650 5150
 F 0 "Q11" H 6650 5500 50  0000 L CNN
@@ -1158,7 +1159,7 @@ F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 6650 5150 50  000
 	1    0    0    1   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R10
+L Device:R_Small R10
 U 1 1 60759E1E
 P 6300 4650
 F 0 "R10" V 6500 4750 50  0000 R CNN
@@ -1169,7 +1170,7 @@ F 3 "~" H 6300 4650 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R11
+L Device:R_Small R11
 U 1 1 6075A9E4
 P 6300 5150
 F 0 "R11" V 6200 5250 50  0000 R CNN
@@ -1206,7 +1207,7 @@ Wire Wire Line
 Wire Wire Line
 	5900 4650 6200 4650
 $Comp
-L foodSampler_v20-rescue:SWITCH_PB_NO-_switch SW10
+L _switch:SWITCH_PB_NO SW10
 U 1 1 607C1FEF
 P 7450 4600
 F 0 "SW10" V 7503 4559 60  0000 R CNN
@@ -1217,7 +1218,7 @@ F 3 "" H 7450 4600 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C10
+L Device:C_Small C10
 U 1 1 607C4EAF
 P 7200 4600
 F 0 "C10" H 7150 5000 50  0000 L CNN
@@ -1228,7 +1229,7 @@ F 3 "~" H 7200 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C11
+L Device:C_Small C11
 U 1 1 607C6FA1
 P 7200 5600
 F 0 "C11" H 7150 5400 50  0000 L CNN
@@ -1239,7 +1240,7 @@ F 3 "~" H 7200 5600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SWITCH_PB_NO-_switch SW11
+L _switch:SWITCH_PB_NO SW11
 U 1 1 607C757D
 P 7450 5600
 F 0 "SW11" V 7503 5559 60  0000 R CNN
@@ -1282,7 +1283,7 @@ Connection ~ 7200 5400
 Wire Wire Line
 	7200 5400 7450 5400
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0132
+L power:GND #PWR0132
 U 1 1 607FB135
 P 7450 4800
 F 0 "#PWR0132" H 7450 4550 50  0001 C CNN
@@ -1293,7 +1294,7 @@ F 3 "" H 7450 4800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0133
+L power:GND #PWR0133
 U 1 1 607FB54A
 P 7450 5800
 F 0 "#PWR0133" H 7450 5550 50  0001 C CNN
@@ -1310,7 +1311,7 @@ Wire Wire Line
 	7450 4750 7450 4800
 Connection ~ 7450 4750
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C12
+L Device:C_Small C12
 U 1 1 6080E975
 P 4800 3900
 F 0 "C12" H 4900 3950 50  0000 L CNN
@@ -1321,7 +1322,7 @@ F 3 "~" H 4800 3900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:+3V3-power #PWR0134
+L power:+3V3 #PWR0134
 U 1 1 6080FBBA
 P 4800 3800
 F 0 "#PWR0134" H 4800 3650 50  0001 C CNN
@@ -1332,7 +1333,7 @@ F 3 "" H 4800 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0135
+L power:GND #PWR0135
 U 1 1 60810165
 P 4800 4000
 F 0 "#PWR0135" H 4800 3750 50  0001 C CNN
@@ -1347,7 +1348,7 @@ RESET
 Text Notes 7600 4800 0    50   ~ 0
 BOOT\n
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0136
+L power:GND #PWR0136
 U 1 1 605DC7B5
 P 1300 9150
 F 0 "#PWR0136" H 1300 8900 50  0001 C CNN
@@ -1358,7 +1359,7 @@ F 3 "" H 1300 9150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C40
+L Device:C_Small C40
 U 1 1 605DD36D
 P 2200 8950
 F 0 "C40" H 2300 9000 50  0000 L CNN
@@ -1369,7 +1370,7 @@ F 3 "~" H 2200 8950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RS40
+L Device:R_Small RS40
 U 1 1 605DDDEF
 P 1850 8750
 F 0 "RS40" V 1950 8950 50  0000 R CNN
@@ -1380,7 +1381,7 @@ F 3 "~" H 1850 8750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SWITCH_SPST_LED-_switch SW40
+L _switch:SWITCH_SPST_LED SW40
 U 1 1 605E1379
 P 1300 8950
 F 0 "SW40" V 1254 9191 50  0000 L CNN
@@ -1395,7 +1396,7 @@ SW0
 Text GLabel 2500 8500 2    50   Input ~ 0
 LED0
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RL40
+L Device:R_Small RL40
 U 1 1 605E7C23
 P 1850 8500
 F 0 "RL40" V 1950 8700 50  0000 R CNN
@@ -1425,7 +1426,7 @@ Wire Wire Line
 Wire Wire Line
 	1300 9100 1300 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0137
+L power:GND #PWR0137
 U 1 1 6062151B
 P 2200 9150
 F 0 "#PWR0137" H 2200 8900 50  0001 C CNN
@@ -1438,7 +1439,7 @@ $EndComp
 Wire Wire Line
 	2200 9050 2200 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0138
+L power:GND #PWR0138
 U 1 1 6062B7AF
 P 1100 9150
 F 0 "#PWR0138" H 1100 8900 50  0001 C CNN
@@ -1451,7 +1452,7 @@ $EndComp
 Wire Wire Line
 	1100 9100 1100 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0139
+L power:GND #PWR0139
 U 1 1 6067F554
 P 3350 9150
 F 0 "#PWR0139" H 3350 8900 50  0001 C CNN
@@ -1462,7 +1463,7 @@ F 3 "" H 3350 9150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C41
+L Device:C_Small C41
 U 1 1 6067F55A
 P 4250 8950
 F 0 "C41" H 4350 9000 50  0000 L CNN
@@ -1473,7 +1474,7 @@ F 3 "~" H 4250 8950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RS41
+L Device:R_Small RS41
 U 1 1 6067F560
 P 3900 8750
 F 0 "RS41" V 4000 8950 50  0000 R CNN
@@ -1484,7 +1485,7 @@ F 3 "~" H 3900 8750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SWITCH_SPST_LED-_switch SW41
+L _switch:SWITCH_SPST_LED SW41
 U 1 1 6067F566
 P 3350 8950
 F 0 "SW41" V 3304 9191 50  0000 L CNN
@@ -1499,7 +1500,7 @@ SW1
 Text GLabel 4550 8500 2    50   Input ~ 0
 LED1
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RL41
+L Device:R_Small RL41
 U 1 1 6067F56E
 P 3900 8500
 F 0 "RL41" V 4000 8700 50  0000 R CNN
@@ -1529,7 +1530,7 @@ Wire Wire Line
 Wire Wire Line
 	3350 9100 3350 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0140
+L power:GND #PWR0140
 U 1 1 6067F57E
 P 4250 9150
 F 0 "#PWR0140" H 4250 8900 50  0001 C CNN
@@ -1542,7 +1543,7 @@ $EndComp
 Wire Wire Line
 	4250 9050 4250 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0141
+L power:GND #PWR0141
 U 1 1 6067F585
 P 3150 9150
 F 0 "#PWR0141" H 3150 8900 50  0001 C CNN
@@ -1555,7 +1556,7 @@ $EndComp
 Wire Wire Line
 	3150 9100 3150 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0142
+L power:GND #PWR0142
 U 1 1 6068BC0A
 P 5400 9150
 F 0 "#PWR0142" H 5400 8900 50  0001 C CNN
@@ -1566,7 +1567,7 @@ F 3 "" H 5400 9150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C42
+L Device:C_Small C42
 U 1 1 6068BC10
 P 6300 8950
 F 0 "C42" H 6400 9000 50  0000 L CNN
@@ -1577,7 +1578,7 @@ F 3 "~" H 6300 8950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RS42
+L Device:R_Small RS42
 U 1 1 6068BC16
 P 5950 8750
 F 0 "RS42" V 6050 8950 50  0000 R CNN
@@ -1592,7 +1593,7 @@ SW2
 Text GLabel 6600 8500 2    50   Input ~ 0
 LED2
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RL42
+L Device:R_Small RL42
 U 1 1 6068BC24
 P 5950 8500
 F 0 "RL42" V 6050 8700 50  0000 R CNN
@@ -1620,7 +1621,7 @@ Connection ~ 6300 8750
 Wire Wire Line
 	6300 8750 6600 8750
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0143
+L power:GND #PWR0143
 U 1 1 6068BC34
 P 6300 9150
 F 0 "#PWR0143" H 6300 8900 50  0001 C CNN
@@ -1633,7 +1634,7 @@ $EndComp
 Wire Wire Line
 	6300 9050 6300 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0144
+L power:GND #PWR0144
 U 1 1 6068BC3B
 P 5200 9150
 F 0 "#PWR0144" H 5200 8900 50  0001 C CNN
@@ -1646,7 +1647,7 @@ $EndComp
 Wire Wire Line
 	5200 9100 5200 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0145
+L power:GND #PWR0145
 U 1 1 606996AD
 P 7400 9150
 F 0 "#PWR0145" H 7400 8900 50  0001 C CNN
@@ -1657,7 +1658,7 @@ F 3 "" H 7400 9150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C43
+L Device:C_Small C43
 U 1 1 606996B3
 P 8300 8950
 F 0 "C43" H 8400 9000 50  0000 L CNN
@@ -1668,7 +1669,7 @@ F 3 "~" H 8300 8950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RS43
+L Device:R_Small RS43
 U 1 1 606996B9
 P 7950 8750
 F 0 "RS43" V 8050 8950 50  0000 R CNN
@@ -1679,7 +1680,7 @@ F 3 "~" H 7950 8750 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SWITCH_SPST_LED-_switch SW43
+L _switch:SWITCH_SPST_LED SW43
 U 1 1 606996BF
 P 7400 8950
 F 0 "SW43" V 7354 9191 50  0000 L CNN
@@ -1694,7 +1695,7 @@ SW3
 Text GLabel 8600 8500 2    50   Input ~ 0
 LED3
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RL43
+L Device:R_Small RL43
 U 1 1 606996C7
 P 7950 8500
 F 0 "RL43" V 8050 8700 50  0000 R CNN
@@ -1724,7 +1725,7 @@ Wire Wire Line
 Wire Wire Line
 	7400 9100 7400 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0146
+L power:GND #PWR0146
 U 1 1 606996D7
 P 8300 9150
 F 0 "#PWR0146" H 8300 8900 50  0001 C CNN
@@ -1737,7 +1738,7 @@ $EndComp
 Wire Wire Line
 	8300 9050 8300 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0147
+L power:GND #PWR0147
 U 1 1 606996DE
 P 7200 9150
 F 0 "#PWR0147" H 7200 8900 50  0001 C CNN
@@ -1750,7 +1751,7 @@ $EndComp
 Wire Wire Line
 	7200 9100 7200 9150
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0148
+L power:GND #PWR0148
 U 1 1 606C86AF
 P 1250 10300
 F 0 "#PWR0148" H 1250 10050 50  0001 C CNN
@@ -1761,7 +1762,7 @@ F 3 "" H 1250 10300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C44
+L Device:C_Small C44
 U 1 1 606C86B5
 P 2150 10100
 F 0 "C44" H 2250 10150 50  0000 L CNN
@@ -1772,7 +1773,7 @@ F 3 "~" H 2150 10100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RS44
+L Device:R_Small RS44
 U 1 1 606C86BB
 P 1800 9900
 F 0 "RS44" V 1900 10100 50  0000 R CNN
@@ -1783,7 +1784,7 @@ F 3 "~" H 1800 9900 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SWITCH_SPST_LED-_switch SW44
+L _switch:SWITCH_SPST_LED SW44
 U 1 1 606C86C1
 P 1250 10100
 F 0 "SW44" V 1204 10341 50  0000 L CNN
@@ -1798,7 +1799,7 @@ SW4
 Text GLabel 2450 9650 2    50   Input ~ 0
 LED4
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RL44
+L Device:R_Small RL44
 U 1 1 606C86C9
 P 1800 9650
 F 0 "RL44" V 1900 9850 50  0000 R CNN
@@ -1828,7 +1829,7 @@ Wire Wire Line
 Wire Wire Line
 	1250 10250 1250 10300
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0149
+L power:GND #PWR0149
 U 1 1 606C86D9
 P 2150 10300
 F 0 "#PWR0149" H 2150 10050 50  0001 C CNN
@@ -1841,7 +1842,7 @@ $EndComp
 Wire Wire Line
 	2150 10200 2150 10300
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0150
+L power:GND #PWR0150
 U 1 1 606C86E0
 P 1050 10300
 F 0 "#PWR0150" H 1050 10050 50  0001 C CNN
@@ -1854,7 +1855,7 @@ $EndComp
 Wire Wire Line
 	1050 10250 1050 10300
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0151
+L power:GND #PWR0151
 U 1 1 606C86E7
 P 3300 10300
 F 0 "#PWR0151" H 3300 10050 50  0001 C CNN
@@ -1865,7 +1866,7 @@ F 3 "" H 3300 10300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C45
+L Device:C_Small C45
 U 1 1 606C86ED
 P 4200 10100
 F 0 "C45" H 4300 10150 50  0000 L CNN
@@ -1876,7 +1877,7 @@ F 3 "~" H 4200 10100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RS45
+L Device:R_Small RS45
 U 1 1 606C86F3
 P 3850 9900
 F 0 "RS45" V 3950 10100 50  0000 R CNN
@@ -1887,7 +1888,7 @@ F 3 "~" H 3850 9900 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SWITCH_SPST_LED-_switch SW45
+L _switch:SWITCH_SPST_LED SW45
 U 1 1 606C86F9
 P 3300 10100
 F 0 "SW45" V 3254 10341 50  0000 L CNN
@@ -1902,7 +1903,7 @@ SW5
 Text GLabel 4500 9650 2    50   Input ~ 0
 LED5
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RL45
+L Device:R_Small RL45
 U 1 1 606C8701
 P 3850 9650
 F 0 "RL45" V 3950 9850 50  0000 R CNN
@@ -1932,7 +1933,7 @@ Wire Wire Line
 Wire Wire Line
 	3300 10250 3300 10300
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0152
+L power:GND #PWR0152
 U 1 1 606C8711
 P 4200 10300
 F 0 "#PWR0152" H 4200 10050 50  0001 C CNN
@@ -1945,7 +1946,7 @@ $EndComp
 Wire Wire Line
 	4200 10200 4200 10300
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0153
+L power:GND #PWR0153
 U 1 1 606C8718
 P 3100 10300
 F 0 "#PWR0153" H 3100 10050 50  0001 C CNN
@@ -1958,7 +1959,7 @@ $EndComp
 Wire Wire Line
 	3100 10250 3100 10300
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0154
+L power:GND #PWR0154
 U 1 1 606C871F
 P 5350 10300
 F 0 "#PWR0154" H 5350 10050 50  0001 C CNN
@@ -1969,7 +1970,7 @@ F 3 "" H 5350 10300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C46
+L Device:C_Small C46
 U 1 1 606C8725
 P 6250 10100
 F 0 "C46" H 6350 10150 50  0000 L CNN
@@ -1980,7 +1981,7 @@ F 3 "~" H 6250 10100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RS46
+L Device:R_Small RS46
 U 1 1 606C872B
 P 5900 9900
 F 0 "RS46" V 6000 10100 50  0000 R CNN
@@ -1991,7 +1992,7 @@ F 3 "~" H 5900 9900 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SWITCH_SPST_LED-_switch SW46
+L _switch:SWITCH_SPST_LED SW46
 U 1 1 606C8731
 P 5350 10100
 F 0 "SW46" V 5304 10341 50  0000 L CNN
@@ -2006,7 +2007,7 @@ SW6
 Text GLabel 6550 9650 2    50   Input ~ 0
 LED6
 $Comp
-L foodSampler_v20-rescue:R_Small-Device RL46
+L Device:R_Small RL46
 U 1 1 606C8739
 P 5900 9650
 F 0 "RL46" V 6000 9850 50  0000 R CNN
@@ -2036,7 +2037,7 @@ Wire Wire Line
 Wire Wire Line
 	5350 10250 5350 10300
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0155
+L power:GND #PWR0155
 U 1 1 606C8749
 P 6250 10300
 F 0 "#PWR0155" H 6250 10050 50  0001 C CNN
@@ -2049,7 +2050,7 @@ $EndComp
 Wire Wire Line
 	6250 10200 6250 10300
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0156
+L power:GND #PWR0156
 U 1 1 606C8750
 P 5150 10300
 F 0 "#PWR0156" H 5150 10050 50  0001 C CNN
@@ -2062,7 +2063,7 @@ $EndComp
 Wire Wire Line
 	5150 10250 5150 10300
 $Comp
-L foodSampler_v20-rescue:+BATT-power #PWR0157
+L power:+BATT #PWR0157
 U 1 1 6071C91F
 P 11100 1050
 F 0 "#PWR0157" H 11100 900 50  0001 C CNN
@@ -2077,7 +2078,7 @@ Wire Wire Line
 Text Notes 10500 7850 0    50   ~ 0
 ! Don’t use GPIO 5, 12 & 15 if possible.\nThese are part of boot sequence.
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R40
+L Device:R_Small R40
 U 1 1 6073C804
 P 12650 7450
 F 0 "R40" H 12900 7400 50  0000 R CNN
@@ -2088,7 +2089,7 @@ F 3 "~" H 12650 7450 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R41
+L Device:R_Small R41
 U 1 1 6073CF60
 P 12650 7750
 F 0 "R41" H 12900 7700 50  0000 R CNN
@@ -2099,7 +2100,7 @@ F 3 "~" H 12650 7750 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0158
+L power:GND #PWR0158
 U 1 1 6073D673
 P 12650 7900
 F 0 "#PWR0158" H 12650 7650 50  0001 C CNN
@@ -2110,7 +2111,7 @@ F 3 "" H 12650 7900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:+BATT-power #PWR0159
+L power:+BATT #PWR0159
 U 1 1 6073E212
 P 12650 7300
 F 0 "#PWR0159" H 12650 7150 50  0001 C CNN
@@ -2158,7 +2159,7 @@ Wire Wire Line
 Connection ~ 7400 9100
 Connection ~ 12600 1050
 $Comp
-L foodSampler_v20-rescue:MountingHole-Mechanical H00
+L Mechanical:MountingHole H00
 U 1 1 6066E628
 P 15050 3050
 F 0 "H00" H 15150 3096 50  0000 L CNN
@@ -2169,7 +2170,7 @@ F 3 "~" H 15050 3050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:MountingHole-Mechanical H01
+L Mechanical:MountingHole H01
 U 1 1 6066ED29
 P 15050 3250
 F 0 "H01" H 15150 3296 50  0000 L CNN
@@ -2180,7 +2181,7 @@ F 3 "~" H 15050 3250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:MountingHole-Mechanical H02
+L Mechanical:MountingHole H02
 U 1 1 6066EF21
 P 15050 3450
 F 0 "H02" H 15150 3496 50  0000 L CNN
@@ -2191,7 +2192,7 @@ F 3 "~" H 15050 3450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:MountingHole-Mechanical H03
+L Mechanical:MountingHole H03
 U 1 1 6066F0CA
 P 15050 3650
 F 0 "H03" H 15150 3696 50  0000 L CNN
@@ -2202,7 +2203,7 @@ F 3 "~" H 15050 3650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:SWITCH_SPDT-_switch SW20
+L _switch:SWITCH_SPDT SW20
 U 1 1 60683FC1
 P 11650 1100
 F 0 "SW20" H 11650 1350 60  0000 C CNN
@@ -2213,7 +2214,7 @@ F 3 "" H 11650 1100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:C_Small-Device C24
+L Device:C_Small C24
 U 1 1 6068938C
 P 12050 1350
 F 0 "C24" H 12142 1396 50  0000 L CNN
@@ -2226,7 +2227,7 @@ $EndComp
 Wire Wire Line
 	11750 1050 12050 1050
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0160
+L power:GND #PWR0160
 U 1 1 606D0793
 P 12050 1600
 F 0 "#PWR0160" H 12050 1350 50  0001 C CNN
@@ -2245,7 +2246,7 @@ Wire Wire Line
 	12050 1450 12050 1600
 Connection ~ 13350 1850
 $Comp
-L foodSampler_v20-rescue:RPX-1.0-_battery_management U20
+L _battery_management:RPX-1.0 U20
 U 1 1 60767EE4
 P 13250 1350
 F 0 "U20" H 13250 1915 50  0000 C CNN
@@ -2325,7 +2326,7 @@ Wire Wire Line
 Wire Wire Line
 	5700 1800 6050 1800
 $Comp
-L foodSampler_v20-rescue:LED_Small-Device D40
+L Device:LED_Small D40
 U 1 1 60CDC05A
 P 10250 7050
 F 0 "D40" V 10300 7150 50  0000 L CNN
@@ -2336,7 +2337,7 @@ F 3 "~" V 10250 7050 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:R_Small-Device R42
+L Device:R_Small R42
 U 1 1 60CDE3B6
 P 10250 6800
 F 0 "R42" H 10350 6750 50  0000 L CNN
@@ -2347,7 +2348,7 @@ F 3 "~" H 10250 6800 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0161
+L power:GND #PWR0161
 U 1 1 60CE0454
 P 10250 7200
 F 0 "#PWR0161" H 10250 6950 50  0001 C CNN
@@ -2371,7 +2372,7 @@ Wire Wire Line
 	5400 9100 5400 9150
 Connection ~ 5400 9100
 $Comp
-L foodSampler_v20-rescue:SWITCH_SPST_LED-_switch SW42
+L _switch:SWITCH_SPST_LED SW42
 U 1 1 6068BC1C
 P 5400 8950
 F 0 "SW42" V 5354 9191 50  0000 L CNN
@@ -2382,7 +2383,7 @@ F 3 "" H 5400 9050 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:GND-power #PWR0162
+L power:GND #PWR0162
 U 1 1 606DDE8C
 P 9500 4350
 F 0 "#PWR0162" H 9500 4100 50  0001 C CNN
@@ -2393,7 +2394,7 @@ F 3 "" H 9500 4350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v20-rescue:TP-_special TP00
+L _special:TP TP00
 U 1 1 606DF82F
 P 9500 4250
 F 0 "TP00" V 9500 4202 50  0000 R CNN
@@ -2404,7 +2405,7 @@ F 3 "" H 9500 4250 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L foodSampler_v20-rescue:TP-_special TP01
+L _special:TP TP01
 U 1 1 606E1C3B
 P 4000 1000
 F 0 "TP01" V 4050 950 50  0000 R CNN
@@ -2418,7 +2419,7 @@ Connection ~ 4000 1100
 Wire Wire Line
 	4000 1100 4450 1100
 $Comp
-L foodSampler_v20-rescue:TP-_special TP02
+L _special:TP TP02
 U 1 1 606E40A4
 P 6300 1000
 F 0 "TP02" V 6350 950 50  0000 R CNN
@@ -2432,7 +2433,7 @@ Connection ~ 6300 1100
 Wire Wire Line
 	6300 1100 6750 1100
 $Comp
-L foodSampler_v20-rescue:TP-_special TP30
+L _special:TP TP30
 U 1 1 606E5F72
 P 10550 1000
 F 0 "TP30" V 10600 950 50  0000 R CNN
@@ -2446,7 +2447,7 @@ Connection ~ 10550 1100
 Wire Wire Line
 	10550 1100 11100 1100
 $Comp
-L foodSampler_v20-rescue:TP-_special TP20
+L _special:TP TP20
 U 1 1 606E81C7
 P 14750 950
 F 0 "TP20" V 14800 900 50  0000 R CNN
@@ -2454,6 +2455,28 @@ F 1 "3V3" V 14700 900 50  0000 R CNN
 F 2 "_connectors:TEST_PAD_HOLE_1mm" H 14750 950 50  0001 C CNN
 F 3 "" H 14750 950 50  0001 C CNN
 	1    14750 950 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L _special:TP TP10
+U 1 1 606EF1A6
+P 7450 4300
+F 0 "TP10" V 7550 4250 50  0000 R CNN
+F 1 "BOOT" V 7450 4250 50  0000 R CNN
+F 2 "_connectors:TEST_PAD_HOLE_1mm" H 7450 4300 50  0001 C CNN
+F 3 "" H 7450 4300 50  0001 C CNN
+	1    7450 4300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L _special:TP TP11
+U 1 1 606F00F2
+P 7450 5300
+F 0 "TP11" V 7550 5250 50  0000 R CNN
+F 1 "RESET" V 7450 5250 50  0000 R CNN
+F 2 "_connectors:TEST_PAD_HOLE_1mm" H 7450 5300 50  0001 C CNN
+F 3 "" H 7450 5300 50  0001 C CNN
+	1    7450 5300
 	0    -1   -1   0   
 $EndComp
 $EndSCHEMATC

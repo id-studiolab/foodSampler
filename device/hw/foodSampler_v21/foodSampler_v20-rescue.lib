@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# foodSampler_v20-rescue_+3V3-power
+# +3V3-power
 #
-DEF foodSampler_v20-rescue_+3V3-power #PWR 0 0 Y Y 1 F P
+DEF +3V3-power #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "foodSampler_v20-rescue_+3V3-power" 0 140 50 H V C CNN
+F1 "+3V3-power" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -16,11 +16,11 @@ X +3V3 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_+BATT-power
+# +BATT-power
 #
-DEF foodSampler_v20-rescue_+BATT-power #PWR 0 0 Y Y 1 F P
+DEF +BATT-power #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "foodSampler_v20-rescue_+BATT-power" 0 140 50 H V C CNN
+F1 "+BATT-power" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -31,11 +31,11 @@ X +BATT 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_C_Small-Device
+# C_Small-Device
 #
-DEF foodSampler_v20-rescue_C_Small-Device C 0 10 N N 1 F N
+DEF C_Small-Device C 0 10 N N 1 F N
 F0 "C" 10 70 50 H V L CNN
-F1 "foodSampler_v20-rescue_C_Small-Device" 10 -80 50 H V L CNN
+F1 "C_Small-Device" 10 -80 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -49,11 +49,11 @@ X ~ 2 0 -100 80 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_Conn_01x02-Connector_Generic
+# Conn_01x02-Connector_Generic
 #
-DEF foodSampler_v20-rescue_Conn_01x02-Connector_Generic J 0 40 Y N 1 F N
+DEF Conn_01x02-Connector_Generic J 0 40 Y N 1 F N
 F0 "J" 0 100 50 H V C CNN
-F1 "foodSampler_v20-rescue_Conn_01x02-Connector_Generic" 0 -200 50 H V C CNN
+F1 "Conn_01x02-Connector_Generic" 0 -200 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -68,11 +68,11 @@ X Pin_2 2 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_D_Schottky_x2_ACom_KKA-Device
+# D_Schottky_x2_ACom_KKA-Device
 #
-DEF foodSampler_v20-rescue_D_Schottky_x2_ACom_KKA-Device D 0 30 Y N 1 F N
+DEF D_Schottky_x2_ACom_KKA-Device D 0 30 Y N 1 F N
 F0 "D" 50 -100 50 H V C CNN
-F1 "foodSampler_v20-rescue_D_Schottky_x2_ACom_KKA-Device" 0 100 50 H V C CNN
+F1 "D_Schottky_x2_ACom_KKA-Device" 0 100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -92,11 +92,11 @@ X A 3 0 -200 100 U 50 50 0 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_D_TVS_x2_AAC-Device
+# D_TVS_x2_AAC-Device
 #
-DEF foodSampler_v20-rescue_D_TVS_x2_AAC-Device D 0 40 Y N 1 F N
+DEF D_TVS_x2_AAC-Device D 0 40 Y N 1 F N
 F0 "D" 0 175 50 H V C CNN
-F1 "foodSampler_v20-rescue_D_TVS_x2_AAC-Device" 0 100 50 H V C CNN
+F1 "D_TVS_x2_AAC-Device" 0 100 50 H V C CNN
 F2 "" -150 0 50 H I C CNN
 F3 "" -150 0 50 H I C CNN
 DRAW
@@ -112,11 +112,11 @@ X common 3 0 -150 100 U 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_ESP32-WROOM-_ESP32-footprints-Shem-Lib
+# ESP32-WROOM-_ESP32-footprints-Shem-Lib
 #
-DEF foodSampler_v20-rescue_ESP32-WROOM-_ESP32-footprints-Shem-Lib U 0 40 Y Y 1 F N
+DEF ESP32-WROOM-_ESP32-footprints-Shem-Lib U 0 40 Y Y 1 F N
 F0 "U" -700 1250 60 H V C CNN
-F1 "foodSampler_v20-rescue_ESP32-WROOM-_ESP32-footprints-Shem-Lib" 500 1250 60 H V C CNN
+F1 "ESP32-WROOM-_ESP32-footprints-Shem-Lib" 500 1250 60 H V C CNN
 F2 "ESP32-footprints-Lib:ESP32-WROOM" 350 1350 60 H I C CNN
 F3 "" -450 450 60 H I C CNN
 DRAW
@@ -164,11 +164,11 @@ X IO33 9 -950 -100 200 R 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_FT231XS-Interface_USB
+# FT231XS-Interface_USB
 #
-DEF foodSampler_v20-rescue_FT231XS-Interface_USB U 0 40 Y Y 1 F N
+DEF FT231XS-Interface_USB U 0 40 Y Y 1 F N
 F0 "U" -550 800 50 H V L CNN
-F1 "foodSampler_v20-rescue_FT231XS-Interface_USB" 300 800 50 H V L CNN
+F1 "FT231XS-Interface_USB" 300 800 50 H V L CNN
 F2 "Package_SO:SSOP-20_3.9x8.7mm_P0.635mm" 600 -950 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -199,11 +199,11 @@ X ~CTS 9 700 300 150 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_GND-power
+# GND-power
 #
-DEF foodSampler_v20-rescue_GND-power #PWR 0 0 Y Y 1 F P
+DEF GND-power #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "foodSampler_v20-rescue_GND-power" 0 -150 50 H V C CNN
+F1 "GND-power" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -212,11 +212,11 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_GNDA-power
+# GNDA-power
 #
-DEF foodSampler_v20-rescue_GNDA-power #PWR 0 0 Y Y 1 F P
+DEF GNDA-power #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "foodSampler_v20-rescue_GNDA-power" 0 -150 50 H V C CNN
+F1 "GNDA-power" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -225,11 +225,11 @@ X GNDA 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_IP2721-_voltage_regulator
+# IP2721-_voltage_regulator
 #
-DEF foodSampler_v20-rescue_IP2721-_voltage_regulator U 0 40 Y Y 1 F N
+DEF IP2721-_voltage_regulator U 0 40 Y Y 1 F N
 F0 "U" 400 350 50 H V C CNN
-F1 "foodSampler_v20-rescue_IP2721-_voltage_regulator" 350 -350 50 H V C CNN
+F1 "IP2721-_voltage_regulator" 350 -350 50 H V C CNN
 F2 "" -100 0 50 H I C CNN
 F3 "" -100 0 50 H I C CNN
 DRAW
@@ -244,11 +244,11 @@ X GND 5 50 -400 100 U 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_LED_Small-Device
+# LED_Small-Device
 #
-DEF foodSampler_v20-rescue_LED_Small-Device D 0 10 N N 1 F N
+DEF LED_Small-Device D 0 10 N N 1 F N
 F0 "D" -50 125 50 H V L CNN
-F1 "foodSampler_v20-rescue_LED_Small-Device" -175 -100 50 H V L CNN
+F1 "LED_Small-Device" -175 -100 50 H V L CNN
 F2 "" 0 0 50 V I C CNN
 F3 "" 0 0 50 V I C CNN
 $FPLIST
@@ -267,11 +267,11 @@ X A 2 100 0 70 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_L_Small-Device
+# L_Small-Device
 #
-DEF foodSampler_v20-rescue_L_Small-Device L 0 10 N N 1 F N
+DEF L_Small-Device L 0 10 N N 1 F N
 F0 "L" 30 40 50 H V L CNN
-F1 "foodSampler_v20-rescue_L_Small-Device" 30 -40 50 H V L CNN
+F1 "L_Small-Device" 30 -40 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -290,11 +290,11 @@ X ~ 2 0 -100 20 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_MMBT3904-Transistor_BJT
+# MMBT3904-Transistor_BJT
 #
-DEF foodSampler_v20-rescue_MMBT3904-Transistor_BJT Q 0 0 Y N 1 F N
+DEF MMBT3904-Transistor_BJT Q 0 0 Y N 1 F N
 F0 "Q" 200 75 50 H V L CNN
-F1 "foodSampler_v20-rescue_MMBT3904-Transistor_BJT" 200 0 50 H V L CNN
+F1 "MMBT3904-Transistor_BJT" 200 0 50 H V L CNN
 F2 "Package_TO_SOT_SMD:SOT-23" 200 -75 50 H I L CIN
 F3 "" 0 0 50 H I L CNN
 $FPLIST
@@ -312,11 +312,11 @@ X C 3 100 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_MP2615-_battery_management
+# MP2615-_battery_management
 #
-DEF foodSampler_v20-rescue_MP2615-_battery_management U 0 40 Y Y 1 F N
+DEF MP2615-_battery_management U 0 40 Y Y 1 F N
 F0 "U" 200 750 50 H V C CNN
-F1 "foodSampler_v20-rescue_MP2615-_battery_management" 250 -750 50 H V C CNN
+F1 "MP2615-_battery_management" 250 -750 50 H V C CNN
 F2 "" -50 50 50 H I C CNN
 F3 "" -50 50 50 H I C CNN
 DRAW
@@ -339,11 +339,11 @@ X BATT 9 450 0 150 L 50 50 1 1 w
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_MountingHole-Mechanical
+# MountingHole-Mechanical
 #
-DEF foodSampler_v20-rescue_MountingHole-Mechanical H 0 40 Y Y 1 F N
+DEF MountingHole-Mechanical H 0 40 Y Y 1 F N
 F0 "H" 0 200 50 H V C CNN
-F1 "foodSampler_v20-rescue_MountingHole-Mechanical" 0 125 50 H V C CNN
+F1 "MountingHole-Mechanical" 0 125 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -354,11 +354,11 @@ C 0 0 50 0 1 50 N
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_Q_NMOS_GSD-Device
+# Q_NMOS_GSD-Device
 #
-DEF foodSampler_v20-rescue_Q_NMOS_GSD-Device Q 0 0 Y N 1 F N
+DEF Q_NMOS_GSD-Device Q 0 0 Y N 1 F N
 F0 "Q" 200 50 50 H V L CNN
-F1 "foodSampler_v20-rescue_Q_NMOS_GSD-Device" 200 -50 50 H V L CNN
+F1 "Q_NMOS_GSD-Device" 200 -50 50 H V L CNN
 F2 "" 200 100 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -386,11 +386,11 @@ X D 3 100 200 100 D 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_RPX-1.0-_battery_management
+# RPX-1.0-_battery_management
 #
-DEF foodSampler_v20-rescue_RPX-1.0-_battery_management U 0 40 Y Y 1 F N
+DEF RPX-1.0-_battery_management U 0 40 Y Y 1 F N
 F0 "U" 300 450 50 H V C CNN
-F1 "foodSampler_v20-rescue_RPX-1.0-_battery_management" -200 450 50 H V C CNN
+F1 "RPX-1.0-_battery_management" -200 450 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -413,11 +413,11 @@ X VOUT 9 500 300 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_R_Small-Device
+# R_Small-Device
 #
-DEF foodSampler_v20-rescue_R_Small-Device R 0 10 N N 1 F N
+DEF R_Small-Device R 0 10 N N 1 F N
 F0 "R" 30 20 50 H V L CNN
-F1 "foodSampler_v20-rescue_R_Small-Device" 30 -40 50 H V L CNN
+F1 "R_Small-Device" 30 -40 50 H V L CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -430,11 +430,11 @@ X ~ 2 0 -100 30 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_SWITCH_PB_NO-_switch
+# SWITCH_PB_NO-_switch
 #
-DEF foodSampler_v20-rescue_SWITCH_PB_NO-_switch SW 0 0 N N 1 F N
+DEF SWITCH_PB_NO-_switch SW 0 0 N N 1 F N
 F0 "SW" -90 -80 60 H V L CNN
-F1 "foodSampler_v20-rescue_SWITCH_PB_NO-_switch" -90 -165 60 H V L CNN
+F1 "SWITCH_PB_NO-_switch" -90 -165 60 H V L CNN
 F2 "" 0 0 60 H I C CNN
 F3 "" 0 0 60 H I C CNN
 DRAW
@@ -447,11 +447,11 @@ X B0 2 100 0 25 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_SWITCH_SPDT-_switch
+# SWITCH_SPDT-_switch
 #
-DEF foodSampler_v20-rescue_SWITCH_SPDT-_switch SW 0 0 N N 1 F N
+DEF SWITCH_SPDT-_switch SW 0 0 N N 1 F N
 F0 "SW" 0 -150 60 H V C CNN
-F1 "foodSampler_v20-rescue_SWITCH_SPDT-_switch" 200 -250 60 H V C CNN
+F1 "SWITCH_SPDT-_switch" 200 -250 60 H V C CNN
 F2 "" 0 0 60 H I C CNN
 F3 "" 0 0 60 H I C CNN
 DRAW
@@ -465,11 +465,11 @@ X 3 3 100 -50 25 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_SWITCH_SPST_LED-_switch
+# SWITCH_SPST_LED-_switch
 #
-DEF foodSampler_v20-rescue_SWITCH_SPST_LED-_switch SW 0 40 Y N 1 F N
+DEF SWITCH_SPST_LED-_switch SW 0 40 Y N 1 F N
 F0 "SW" 0 350 50 H V C CNN
-F1 "foodSampler_v20-rescue_SWITCH_SPST_LED-_switch" 0 -300 50 H V C CNN
+F1 "SWITCH_SPST_LED-_switch" 0 -300 50 H V C CNN
 F2 "" 0 100 50 H I C CNN
 F3 "" 0 100 50 H I C CNN
 DRAW
@@ -496,11 +496,11 @@ X ~ 6 -150 -200 50 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_SolderJumper_2_Open-Jumper
+# SolderJumper_2_Open-Jumper
 #
-DEF foodSampler_v20-rescue_SolderJumper_2_Open-Jumper JP 0 0 Y N 1 F N
+DEF SolderJumper_2_Open-Jumper JP 0 0 Y N 1 F N
 F0 "JP" 0 80 50 H V C CNN
-F1 "foodSampler_v20-rescue_SolderJumper_2_Open-Jumper" 0 -100 50 H V C CNN
+F1 "SolderJumper_2_Open-Jumper" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -518,11 +518,11 @@ X B 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_SolderJumper_3_Open-Jumper
+# SolderJumper_3_Open-Jumper
 #
-DEF foodSampler_v20-rescue_SolderJumper_3_Open-Jumper JP 0 0 Y N 1 F N
+DEF SolderJumper_3_Open-Jumper JP 0 0 Y N 1 F N
 F0 "JP" -100 -100 50 H V C CNN
-F1 "foodSampler_v20-rescue_SolderJumper_3_Open-Jumper" 0 110 50 H V C CNN
+F1 "SolderJumper_3_Open-Jumper" 0 110 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -545,11 +545,11 @@ X B 3 200 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_TP-_special
+# TP-_special
 #
-DEF foodSampler_v20-rescue_TP-_special TP? 0 40 N N 1 F N
+DEF TP-_special TP? 0 40 N N 1 F N
 F0 "TP?" 10 70 50 H V C CNN
-F1 "foodSampler_v20-rescue_TP-_special" 70 0 50 H V C CNN
+F1 "TP-_special" 70 0 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -558,11 +558,11 @@ X ~ 1 -100 0 100 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_Thermistor_NTC-Device
+# Thermistor_NTC-Device
 #
-DEF foodSampler_v20-rescue_Thermistor_NTC-Device TH 0 0 N Y 1 F N
+DEF Thermistor_NTC-Device TH 0 0 N Y 1 F N
 F0 "TH" -175 0 50 V V C CNN
-F1 "foodSampler_v20-rescue_Thermistor_NTC-Device" 125 0 50 V V C CNN
+F1 "Thermistor_NTC-Device" 125 0 50 V V C CNN
 F2 "" 0 50 50 H I C CNN
 F3 "" 0 50 50 H I C CNN
 $FPLIST
@@ -590,11 +590,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_USB_C_Receptacle-Connector
+# USB_C_Receptacle-Connector
 #
-DEF foodSampler_v20-rescue_USB_C_Receptacle-Connector J 0 40 Y Y 1 F N
+DEF USB_C_Receptacle-Connector J 0 40 Y Y 1 F N
 F0 "J" -400 1150 50 H V L CNN
-F1 "foodSampler_v20-rescue_USB_C_Receptacle-Connector" 400 1150 50 H V R CNN
+F1 "USB_C_Receptacle-Connector" 400 1150 50 H V R CNN
 F2 "" 150 0 50 H I C CNN
 F3 "" 150 0 50 H I C CNN
 $FPLIST
@@ -664,11 +664,11 @@ X SHIELD S1 -300 -1600 200 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# foodSampler_v20-rescue_VBUS-power
+# VBUS-power
 #
-DEF foodSampler_v20-rescue_VBUS-power #PWR 0 0 Y Y 1 F P
+DEF VBUS-power #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "foodSampler_v20-rescue_VBUS-power" 0 150 50 H V C CNN
+F1 "VBUS-power" 0 150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
