@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name foodSampler_v20-rescue)(type Legacy)(uri ${KIPRJMOD}/foodSampler_v20-rescue.lib)(options "")(descr ""))
+  (lib (name foodSampler_v22-rescue)(type Legacy)(uri ${KIPRJMOD}/foodSampler_v22-rescue.lib)(options "")(descr ""))
+)

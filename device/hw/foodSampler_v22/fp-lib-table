@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name foodSampler_v22)(type KiCad)(uri ${KIPRJMOD}/foodSampler_v22.pretty)(options "")(descr ""))
+)

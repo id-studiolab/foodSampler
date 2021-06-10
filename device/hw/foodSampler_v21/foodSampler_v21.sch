@@ -2341,4 +2341,7 @@ Wire Wire Line
 Wire Wire Line
 	3500 10300 3500 10250
 Connection ~ 3500 10250
+Wire Wire Line
+	1900 9900 2150 9900
+Connection ~ 2150 9900
 $EndSCHEMATC
