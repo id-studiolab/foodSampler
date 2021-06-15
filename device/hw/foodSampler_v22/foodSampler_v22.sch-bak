@@ -85,17 +85,6 @@ F 3 "" H 2850 7050 50  0001 C CNN
 $EndComp
 Text Notes 2600 7500 0    50   ~ 0
 F#:1456392
-$Comp
-L foodSampler_v22-rescue:+3V3-power-foodSampler_v20-rescue #PWR0117
-U 1 1 605C700C
-P 4750 5700
-F 0 "#PWR0117" H 4750 5550 50  0001 C CNN
-F 1 "+3V3" H 4765 5873 50  0000 C CNN
-F 2 "" H 4750 5700 50  0001 C CNN
-F 3 "" H 4750 5700 50  0001 C CNN
-	1    4750 5700
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4800 6150 4750 6150
 $Comp
@@ -410,23 +399,23 @@ Connection ~ 8450 6300
 $Comp
 L foodSampler_v22-rescue:C_Small-Device-foodSampler_v20-rescue C12
 U 1 1 6080E975
-P 5800 5450
-F 0 "C12" H 5900 5500 50  0000 L CNN
-F 1 "100nF" H 5900 5400 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 5800 5450 50  0001 C CNN
-F 3 "~" H 5800 5450 50  0001 C CNN
-	1    5800 5450
+P 4600 5950
+F 0 "C12" H 4300 6000 50  0000 L CNN
+F 1 "100nF" H 4250 5900 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 4600 5950 50  0001 C CNN
+F 3 "~" H 4600 5950 50  0001 C CNN
+	1    4600 5950
 	1    0    0    -1  
 $EndComp
 $Comp
 L foodSampler_v22-rescue:GND-power-foodSampler_v20-rescue #PWR0135
 U 1 1 60810165
-P 5800 5550
-F 0 "#PWR0135" H 5800 5300 50  0001 C CNN
-F 1 "GND" H 5805 5377 50  0000 C CNN
-F 2 "" H 5800 5550 50  0001 C CNN
-F 3 "" H 5800 5550 50  0001 C CNN
-	1    5800 5550
+P 4600 6050
+F 0 "#PWR0135" H 4600 5800 50  0001 C CNN
+F 1 "GND" H 4605 5877 50  0000 C CNN
+F 2 "" H 4600 6050 50  0001 C CNN
+F 3 "" H 4600 6050 50  0001 C CNN
+	1    4600 6050
 	1    0    0    -1  
 $EndComp
 Text Notes 8600 7350 0    50   ~ 0
@@ -922,17 +911,6 @@ Wire Wire Line
 Connection ~ 2400 1950
 Wire Wire Line
 	2400 1950 2400 6450
-$Comp
-L foodSampler_v22-rescue:+3V3-power-foodSampler_v20-rescue #PWR0125
-U 1 1 616BF6DA
-P 5800 5350
-F 0 "#PWR0125" H 5800 5200 50  0001 C CNN
-F 1 "+3V3" H 5815 5523 50  0000 C CNN
-F 2 "" H 5800 5350 50  0001 C CNN
-F 3 "" H 5800 5350 50  0001 C CNN
-	1    5800 5350
-	1    0    0    -1  
-$EndComp
 $Comp
 L Regulator_Linear:MIC5219-3.3YM5 U30
 U 1 1 616C0E68
@@ -2466,9 +2444,6 @@ Wire Wire Line
 	4750 5750 5600 5750
 Wire Wire Line
 	5600 5750 5600 5850
-Connection ~ 4750 5750
-Wire Wire Line
-	4750 5750 4750 5700
 Wire Wire Line
 	4750 5750 4750 6150
 $Comp
@@ -2509,10 +2484,10 @@ F 3 "~" H 4200 7050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L foodSampler_v22-rescue:GND-power-foodSampler_v20-rescue #PWR?
+L foodSampler_v22-rescue:GND-power-foodSampler_v20-rescue #PWR0172
 U 1 1 615BF1E2
 P 4200 7200
-F 0 "#PWR?" H 4200 6950 50  0001 C CNN
+F 0 "#PWR0172" H 4200 6950 50  0001 C CNN
 F 1 "GND" H 4205 7027 50  0000 C CNN
 F 2 "" H 4200 7200 50  0001 C CNN
 F 3 "" H 4200 7200 50  0001 C CNN
@@ -2551,10 +2526,10 @@ Connection ~ 4450 6900
 Wire Wire Line
 	4450 6900 4650 6900
 $Comp
-L foodSampler_v22-rescue:GND-power-foodSampler_v20-rescue #PWR?
+L foodSampler_v22-rescue:GND-power-foodSampler_v20-rescue #PWR0173
 U 1 1 61674B91
 P 4450 7200
-F 0 "#PWR?" H 4450 6950 50  0001 C CNN
+F 0 "#PWR0173" H 4450 6950 50  0001 C CNN
 F 1 "GND" H 4455 7027 50  0000 C CNN
 F 2 "" H 4450 7200 50  0001 C CNN
 F 3 "" H 4450 7200 50  0001 C CNN
@@ -2589,4 +2564,14 @@ F 3 "" H 9600 10550 50  0001 C CNN
 	1    9600 10550
 	0    1    1    0   
 $EndComp
+Text GLabel 4450 5750 0    50   Input ~ 0
+3V3OUT
+Wire Wire Line
+	4450 5750 4600 5750
+Connection ~ 4750 5750
+Wire Wire Line
+	4600 5850 4600 5750
+Connection ~ 4600 5750
+Wire Wire Line
+	4600 5750 4750 5750
 $EndSCHEMATC
